@@ -139,6 +139,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="DAL\DepartmentGateway.cs" />
     <Compile Include="DataContext\UniversityDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,14 @@
     <Compile Include="Migrations\201912171255593_AddedSaveCourse.cs" />
     <Compile Include="Migrations\201912171255593_AddedSaveCourse.designer.cs">
       <DependentUpon>201912171255593_AddedSaveCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171309186_ModifyTeachrModel.cs" />
+    <Compile Include="Migrations\201912171309186_ModifyTeachrModel.designer.cs">
+      <DependentUpon>201912171309186_ModifyTeachrModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171325359_ModifyTeacherModel.cs" />
+    <Compile Include="Migrations\201912171325359_ModifyTeacherModel.designer.cs">
+      <DependentUpon>201912171325359_ModifyTeacherModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -225,6 +234,11 @@
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Teacher\Save.cshtml" />
+    <Content Include="Views\Teacher\Delete.cshtml" />
+    <Content Include="Views\Teacher\Details.cshtml" />
+    <Content Include="Views\Teacher\Edit.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -260,6 +274,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912171255593_AddedSaveCourse.resx">
       <DependentUpon>201912171255593_AddedSaveCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171309186_ModifyTeachrModel.resx">
+      <DependentUpon>201912171309186_ModifyTeachrModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171325359_ModifyTeacherModel.resx">
+      <DependentUpon>201912171325359_ModifyTeacherModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

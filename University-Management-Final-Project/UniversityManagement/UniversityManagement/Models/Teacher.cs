@@ -17,12 +17,12 @@ namespace UniversityManagement.Models
         [Display(Name = "Name")]
         [Column(TypeName = "varchar")]
         [StringLength(50)]
-        public string TeacherName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [Display(Name = "Address")]
         [DataType(DataType.MultilineText)]
-        public string TeacherAddress { get; set; }
+        public string Address { get; set; }
 
         [Required]
         [Display(Name = "Email")]
@@ -31,22 +31,24 @@ namespace UniversityManagement.Models
         [EmailAddress(ErrorMessage = "Invalid Email")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         [Remote("IsEmailExist", "Teacher", ErrorMessage = "Email already exists!")]
-        public string TeacherEmail { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [Display(Name = "Contact No.")]
         [Phone]
         [StringLength(14, MinimumLength = 7, ErrorMessage = "Invalid Phone Number")]
-        public string TeacherContactNo { get; set; }
+        public string ContactNo { get; set; }
 
         [Display(Name = "Designation")]
         public int DesignationId { get; set; }
+        [ForeignKey("DesignationId")]
+
         public virtual Designation Designation { get; set; }
 
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
-
         [ForeignKey("DepartmentId")]
+
         public virtual Department Department { get; set; }
 
         [Required]

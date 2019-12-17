@@ -1,4 +1,5 @@
-﻿@model UniversityManagement.Models.Course
+﻿@using Vereyon.Web
+@model UniversityManagement.Models.Course
 
 @{
     ViewBag.Title = "Create";
@@ -8,12 +9,13 @@
 <br />
 <br />
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <fieldset>
+    @Html.RenderFlashMessages()
+
+    <div class="form-horizontal">
+        <fieldset>
             <legend>Save Course</legend>
             <div class="col-md-8 col-md-offset-3">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -74,11 +76,11 @@
             </div>
         </fieldset>
 
-    <hr />
-    
-</div>
+        <hr />
+
+    </div>
 }
 
 @*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

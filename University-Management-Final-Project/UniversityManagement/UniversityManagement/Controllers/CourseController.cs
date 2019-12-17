@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniversityManagement.DataContext;
 using UniversityManagement.Models;
+using Vereyon.Web;
 
 namespace UniversityManagement.Controllers
 {
@@ -54,6 +55,7 @@ namespace UniversityManagement.Controllers
             {
                 db.Courses.Add(course);
                 db.SaveChanges();
+                FlashMessage.Confirmation("Course Information saved successfully");
                 return RedirectToAction("Save");
             }
 

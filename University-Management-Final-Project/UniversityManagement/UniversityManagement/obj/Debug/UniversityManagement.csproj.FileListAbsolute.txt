@@ -169,3 +169,6 @@ I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManage
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.AddedDayDesignationRoomGrade.resources
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.AddedDays.resources
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.AddedSaveCourse.resources
+I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.ModifyTeachrModel.resources
+I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.csprojAssemblyReference.cache
+I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.ModifyTeacherModel.resources
