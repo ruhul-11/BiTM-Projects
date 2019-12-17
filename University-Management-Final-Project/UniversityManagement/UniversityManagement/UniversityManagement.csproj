@@ -109,6 +109,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Vereyon.Web.FlashMessage, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vereyon.Web.FlashMessage.1.1.0\lib\net40\Vereyon.Web.FlashMessage.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -136,10 +139,40 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\DepartmentGateway.cs" />
+    <Compile Include="DataContext\UniversityDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912170826377_DeparmentAndCourse.cs" />
+    <Compile Include="Migrations\201912170826377_DeparmentAndCourse.designer.cs">
+      <DependentUpon>201912170826377_DeparmentAndCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.cs" />
+    <Compile Include="Migrations\201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.designer.cs">
+      <DependentUpon>201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171009285_AddedSomeDesigation.cs" />
+    <Compile Include="Migrations\201912171009285_AddedSomeDesigation.designer.cs">
+      <DependentUpon>201912171009285_AddedSomeDesigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171014439_AddedDayDesignationRoomGrade.cs" />
+    <Compile Include="Migrations\201912171014439_AddedDayDesignationRoomGrade.designer.cs">
+      <DependentUpon>201912171014439_AddedDayDesignationRoomGrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171019386_AddedDays.cs" />
+    <Compile Include="Migrations\201912171019386_AddedDays.designer.cs">
+      <DependentUpon>201912171019386_AddedDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,8 +213,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Department\Department.cshtml" />
-    <Content Include="Views\Department\GetAllDepartment.cshtml" />
+    <Content Include="Views\Department\SaveDepartment.cshtml" />
+    <Content Include="Views\Department\ViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -198,6 +231,23 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912170826377_DeparmentAndCourse.resx">
+      <DependentUpon>201912170826377_DeparmentAndCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.resx">
+      <DependentUpon>201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171009285_AddedSomeDesigation.resx">
+      <DependentUpon>201912171009285_AddedSomeDesigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171014439_AddedDayDesignationRoomGrade.resx">
+      <DependentUpon>201912171014439_AddedDayDesignationRoomGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171019386_AddedDays.resx">
+      <DependentUpon>201912171019386_AddedDays.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

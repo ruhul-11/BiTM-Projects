@@ -64,11 +64,3 @@ select,
 textarea {
     max-width: 280px;
 }
-footer{
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-    footer p {
-        text-align: center;
-    }
