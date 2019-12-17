@@ -20,7 +20,7 @@ namespace UniversityManagement.Models
         [Remote("IsCodeUnique", "Course", ErrorMessage = "Code already exists!")]
         public string CourseCode { get; set; }
 
-        [Required(ErrorMessage = "Course Name is Mandatory Field")]
+        [Required(ErrorMessage = "Course Name is Reqired")]
         [Display(Name = "Name")]
         [Column(TypeName = "varchar")]
         [Remote("IsNameUnique", "Course", ErrorMessage = "Code already exists!")]

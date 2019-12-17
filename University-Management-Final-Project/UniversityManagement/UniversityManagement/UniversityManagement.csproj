@@ -136,6 +136,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\DepartmentGateway.cs" />
@@ -162,6 +163,10 @@
     <Compile Include="Migrations\201912171019386_AddedDays.cs" />
     <Compile Include="Migrations\201912171019386_AddedDays.designer.cs">
       <DependentUpon>201912171019386_AddedDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171255593_AddedSaveCourse.cs" />
+    <Compile Include="Migrations\201912171255593_AddedSaveCourse.designer.cs">
+      <DependentUpon>201912171255593_AddedSaveCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -215,6 +220,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Department\SaveDepartment.cshtml" />
     <Content Include="Views\Department\ViewDetails.cshtml" />
+    <Content Include="Views\Course\Save.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -247,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912171019386_AddedDays.resx">
       <DependentUpon>201912171019386_AddedDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171255593_AddedSaveCourse.resx">
+      <DependentUpon>201912171255593_AddedSaveCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
