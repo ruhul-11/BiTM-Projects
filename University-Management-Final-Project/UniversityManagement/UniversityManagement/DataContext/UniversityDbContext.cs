@@ -14,5 +14,6 @@ namespace UniversityManagement.DataContext
         public DbSet<Designation> Designations { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<CourseAssign> CourseAssigns { get; set; }
     }
 }

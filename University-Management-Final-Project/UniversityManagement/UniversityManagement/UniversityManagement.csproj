@@ -136,6 +136,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseAssignController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -145,40 +146,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912170826377_DeparmentAndCourse.cs" />
-    <Compile Include="Migrations\201912170826377_DeparmentAndCourse.designer.cs">
-      <DependentUpon>201912170826377_DeparmentAndCourse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.cs" />
-    <Compile Include="Migrations\201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.designer.cs">
-      <DependentUpon>201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171009285_AddedSomeDesigation.cs" />
-    <Compile Include="Migrations\201912171009285_AddedSomeDesigation.designer.cs">
-      <DependentUpon>201912171009285_AddedSomeDesigation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171014439_AddedDayDesignationRoomGrade.cs" />
-    <Compile Include="Migrations\201912171014439_AddedDayDesignationRoomGrade.designer.cs">
-      <DependentUpon>201912171014439_AddedDayDesignationRoomGrade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171019386_AddedDays.cs" />
-    <Compile Include="Migrations\201912171019386_AddedDays.designer.cs">
-      <DependentUpon>201912171019386_AddedDays.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171255593_AddedSaveCourse.cs" />
-    <Compile Include="Migrations\201912171255593_AddedSaveCourse.designer.cs">
-      <DependentUpon>201912171255593_AddedSaveCourse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171309186_ModifyTeachrModel.cs" />
-    <Compile Include="Migrations\201912171309186_ModifyTeachrModel.designer.cs">
-      <DependentUpon>201912171309186_ModifyTeachrModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912171325359_ModifyTeacherModel.cs" />
-    <Compile Include="Migrations\201912171325359_ModifyTeacherModel.designer.cs">
-      <DependentUpon>201912171325359_ModifyTeacherModel.cs</DependentUpon>
+    <Compile Include="Migrations\201912171522576_ModifyCourseAssign.cs" />
+    <Compile Include="Migrations\201912171522576_ModifyCourseAssign.designer.cs">
+      <DependentUpon>201912171522576_ModifyCourseAssign.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseAssign.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
@@ -239,6 +213,7 @@
     <Content Include="Views\Teacher\Details.cshtml" />
     <Content Include="Views\Teacher\Edit.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\CourseAssign\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,29 +232,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912170826377_DeparmentAndCourse.resx">
-      <DependentUpon>201912170826377_DeparmentAndCourse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.resx">
-      <DependentUpon>201912171005049_AddedTeacherStudentDayDesignationSemesterGrade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171009285_AddedSomeDesigation.resx">
-      <DependentUpon>201912171009285_AddedSomeDesigation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171014439_AddedDayDesignationRoomGrade.resx">
-      <DependentUpon>201912171014439_AddedDayDesignationRoomGrade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171019386_AddedDays.resx">
-      <DependentUpon>201912171019386_AddedDays.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171255593_AddedSaveCourse.resx">
-      <DependentUpon>201912171255593_AddedSaveCourse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171309186_ModifyTeachrModel.resx">
-      <DependentUpon>201912171309186_ModifyTeachrModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912171325359_ModifyTeacherModel.resx">
-      <DependentUpon>201912171325359_ModifyTeacherModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912171522576_ModifyCourseAssign.resx">
+      <DependentUpon>201912171522576_ModifyCourseAssign.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

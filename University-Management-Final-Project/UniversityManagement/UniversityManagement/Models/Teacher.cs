@@ -41,7 +41,6 @@ namespace UniversityManagement.Models
 
         [Display(Name = "Designation")]
         public int DesignationId { get; set; }
-        [ForeignKey("DesignationId")]
 
         public virtual Designation Designation { get; set; }
 

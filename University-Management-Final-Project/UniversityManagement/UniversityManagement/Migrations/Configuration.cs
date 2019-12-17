@@ -51,12 +51,12 @@
 
             //  );
             //context.Days.AddOrUpdate(
-            //    new Day() { Name = "Saturday"},
-            //    new Day() { Name = "Sunday"},
-            //    new Day() { Name = "Monday"},
-            //    new Day() { Name = "Tuesday"},
-            //    new Day() { Name = "Wednesday"},
-            //    new Day() { Name = "Thursday"}
+            //    new Day() { Name = "Saturday" },
+            //    new Day() { Name = "Sunday" },
+            //    new Day() { Name = "Monday" },
+            //    new Day() { Name = "Tuesday" },
+            //    new Day() { Name = "Wednesday" },
+            //    new Day() { Name = "Thursday" }
             //    );
 
             //context.Designations.AddOrUpdate(
