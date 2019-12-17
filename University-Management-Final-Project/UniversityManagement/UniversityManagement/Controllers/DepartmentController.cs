@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using UniversityManagement.DataContext;
 using UniversityManagement.Models;
@@ -31,6 +32,13 @@ namespace UniversityManagement.Controllers
             return View();
         }
 
+
+        public ActionResult ViewDetails()
+        {
+            List<Department> departmentList = db.Departments.ToList();
+            return View(departmentList);
+        }
+
         public JsonResult IsDeptCodeExist(string Code)
         {
             var dept = db.Departments.ToList();
@@ -42,22 +50,17 @@ namespace UniversityManagement.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ViewDetails()
+        public JsonResult IsDeptNameExist(string Name)
         {
-            ViewBag.DepartmentIds = new SelectList(db.Departments, "DepartmentId", "Code");
-            return View();
+            var dept = db.Departments.ToList();
+            if (!dept.Any(department => department.Name.ToLower() == Name.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        //public JsonResult GetStudentByDeptId(int departmentId)
-        //{
-        //    var students = db.Students.Where(x => x.DepartmentId == departmentId).ToList();
-        //    return Json(students);
-        //}
 
-        //public JsonResult GetStudentById(int id)
-        //{
-        //    var student = db.Students.FirstOrDefault(x => x.StudentId == id);
-        //    return Json(student);
-        //}
     }
 }

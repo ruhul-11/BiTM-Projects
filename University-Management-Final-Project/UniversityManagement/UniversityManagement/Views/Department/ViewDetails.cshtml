@@ -1,10 +1,15 @@
-﻿@model UniversityManagement.Models.Department
+﻿@using UniversityManagement.Models
+@model IEnumerable<UniversityManagement.Models.Department>
+
 
 @{
     ViewBag.Title = "ViewDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*@{
+    List<Department> departments = ViewBag.DepartmentList;
+}*@
 <h2>View Details</h2>
 
 
@@ -16,65 +21,75 @@
             <th>Name</th>
         </tr>
     </thead>
-    <tbody id="departmentInfo"></tbody>
+    <tbody>
+
+        @foreach (Department department in Model)
+        {
+            <tr>
+                <td class="success">@department.Code</td>
+                <td class="danger">@department.Name</td>
+            </tr>
+        }
+
+    </tbody>
 
 </table>
 
 
 
 @*@section scripts
-{
-    <script>
-        $(document).ready(function() {
-            $("#DepartmentIds").change(function () {
-                $("#studentId").empty();
-                $("#DepartmentName").val('');
-                $("#studentInfo").empty();
-                $("#studentId").append('<option value="">--select student--</option>');
-                var deptId = $("#DepartmentIds").val();
-                var parameter = { departmentId: deptId }
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("GetStudentByDeptId","Department")',
-                    //url:'/Department/GetStudentByDeptId'
-                    contentType: "application/json;charset=utf-8",
-                    data: JSON.stringify(parameter),
-                    success: function(studentList) {
-                        $.each(studentList, function (key, value) {
+    {
+        <script>
+            $(document).ready(function() {
+                $("#DepartmentIds").change(function () {
+                    $("#studentId").empty();
+                    $("#DepartmentName").val('');
+                    $("#studentInfo").empty();
+                    $("#studentId").append('<option value="">--select student--</option>');
+                    var deptId = $("#DepartmentIds").val();
+                    var parameter = { departmentId: deptId }
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStudentByDeptId","Department")',
+                        //url:'/Department/GetStudentByDeptId'
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify(parameter),
+                        success: function(studentList) {
+                            $.each(studentList, function (key, value) {
 
-                            $("#studentId").append('<option value='+value.StudentId+'>'+value.StudentName+'</option>');
+                                $("#studentId").append('<option value='+value.StudentId+'>'+value.StudentName+'</option>');
 
-                        });
-                    }
-                });
-            });
-
-            $("#studentId").change(function () {
-                var id = $("#studentId").val();
-                var parameter = { id: id }
-                $("#DepartmentName").val('');
-                $("#studentInfo").empty();
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("GetStudentById", "Department")',
-                    contentType: "application/json;charset=utf-8",
-                    data: JSON.stringify(parameter),
-                    success: function(student) {
-                        $("#DepartmentName").val(student.Department.DepartmentName);
-                        $("#studentInfo").append('<tr>' +
-                            '<td>' + student.StudentName + '</td>' +
-                            '<td>' + student.Email + '</td>' +
-                            '<td>' + student.Address + '</td>' +
-                            '<td>' + student.Age + '</td>' +
-                            '<td>' + student.Department.DepartmentName + '</td>' +
-                            '</tr>'
-                            );
-                    }
+                            });
+                        }
+                    });
                 });
 
-            });
-        });
-    </script>
+                $("#studentId").change(function () {
+                    var id = $("#studentId").val();
+                    var parameter = { id: id }
+                    $("#DepartmentName").val('');
+                    $("#studentInfo").empty();
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStudentById", "Department")',
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify(parameter),
+                        success: function(student) {
+                            $("#DepartmentName").val(student.Department.DepartmentName);
+                            $("#studentInfo").append('<tr>' +
+                                '<td>' + student.StudentName + '</td>' +
+                                '<td>' + student.Email + '</td>' +
+                                '<td>' + student.Address + '</td>' +
+                                '<td>' + student.Age + '</td>' +
+                                '<td>' + student.Department.DepartmentName + '</td>' +
+                                '</tr>'
+                                );
+                        }
+                    });
 
-}*@
+                });
+            });
+        </script>
+
+    }*@
 
