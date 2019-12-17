@@ -9,6 +9,48 @@
     padding-right: 15px;
 }
 
+.menu li {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap
+}
+
+.menu li a {
+    display: block;
+    background-color: #222222;
+    color: #808080;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 10px;
+}
+.menu li:hover > a {
+    color: #ffffff;
+}
+.menu li li:hover > a {
+    background-color: #444444;
+    text-decoration: none;
+}
+.menu li li {
+    display: block
+}
+
+.menu li ul {
+    position: absolute;
+    left: -40px;
+    top: 100%;
+    z-index: 10;
+    display: none
+}
+
+.menu li:hover > ul {
+    display: block
+}
+
+.menu li li ul {
+    left: 0;
+    top: 0
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -22,3 +64,11 @@ select,
 textarea {
     max-width: 280px;
 }
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+    footer p {
+        text-align: center;
+    }

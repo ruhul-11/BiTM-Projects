@@ -16,23 +16,62 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Department", "Department", "Department")</li>
+
+                    <li>
+                        @Html.ActionLink("Department", "Department", "Department")
+                        <ul>
+                            <li>@Html.ActionLink("Save Department", "Department", "Department")</li>
+                            <li>@Html.ActionLink("View All Department", "Department", "Department")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Course", "Department", "Department")
+                        <ul>
+                            <li>@Html.ActionLink("Save Course", "Department", "Department")</li>
+                            <li>@Html.ActionLink("View Course Details", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Unassign All Courses", "Department", "Department")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Teacher", "Department", "Department")
+                        <ul>
+                            <li>@Html.ActionLink("Save Teacher", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Course Assign to Teacher", "Department", "Department")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Student", "Department", "Department")
+                        <ul>
+                            <li>@Html.ActionLink("Register Student", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Student Details", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Enroll Student in a Course", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Save Student Result", "Department", "Department")</li>
+                            <li>@Html.ActionLink("View Result", "Department", "Department")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Class-Room", "Department", "Department")
+                        <ul>
+                            <li>@Html.ActionLink("Class Room Allocation", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Class Schedule and Room Information", "Department", "Department")</li>
+                            <li>@Html.ActionLink("Unallocate Classrooms", "Department", "Department")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content footer">
         @RenderBody()
-        <hr />
+        
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <hr />
+            <p class="text-center">&copy; @DateTime.Now.Year - University Management System developed by Team Binary</p>
         </footer>
     </div>
 
