@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using UniversityManagement.Models;
 
 namespace UniversityManagement.DataContext
@@ -16,6 +17,12 @@ namespace UniversityManagement.DataContext
         public DbSet<Room> Rooms { get; set; }
         public DbSet<CourseAssign> CourseAssigns { get; set; }
         public DbSet<RoomAllocation> RoomAllocations { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+        }
 
     }
 }

@@ -34,10 +34,5 @@ namespace UniversityManagement.Models
         public int CourseId { get; set; }
         public virtual Course Course { get; set; }
 
-        [Column(TypeName = "varchar")]
-        [StringLength(50)]
-        public string Name { get; set; }
-
-        public double Credit { get; set; }
     }
 }

@@ -110,12 +110,15 @@
 }
 
 @section Scripts {
-    
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script>
         $(document).ready(function () {
             $("#Departments").change(function () {
 
-                
+
                 $("#Teachers").empty();
                 var departmentId = $("#Departments").val();
                 var parameter = { deptId: departmentId };
@@ -136,28 +139,7 @@
 
                 });
 
-                        $("#Teachers").change(function () {
-                            var id = $("#Teachers").val();
-                            var parameter = { TeacherId: id }
 
-                            $.ajax({
-                                type: "POST",
-                                url: '@Url.Action("GetTeacherById", "CourseAssign")',
-                                contentType: "application/json;charset=utf-8",
-                                data: JSON.stringify(parameter),
-                                success: function (data) {
-                                    $("#CreditTaken").val(data.CreditTaken);
-                                    $("#CreditLeft").val(data.CreditLeft);
-                                }
-                            });
-
-                            if (TeacherId == 0) {
-                                $("#CreditTaken").val("");
-                                $("#CreditLeft").val("");
-                            }
-                            return false;
-
-                        });
 
                 $("#CourseId").empty();
                 var departmentId = $("#Departments").val();
@@ -179,61 +161,59 @@
 
                 });
 
-                        $("#CourseId").change(function () {
-                            var id = $("#CourseId").val();
-                            var parameter = { CourseId: id }
 
-                        $.ajax({
-                            type: "POST",
-                            url: '@Url.Action("GetCourseById", "CourseAssign")',
-                            contentType: "application/json;charset=utf-8",
-                            data: JSON.stringify(parameter),
-                            success: function (data) {
-                                $("#Course_CourseName").val(data.CourseName);
-                                $("#Course_CourseCredit").val(data.CourseCredit);
-                            }
-                        });
-                            if (courseId == 0) {
-                                $("#Course_CourseName").val("");
-                                $("#Course_CourseCredit").val("");
-                            }
-                            return false;
-                        });
             });
 
-            
+            $("#Teachers").change(function () {
+                var id = $("#Teachers").val();
+                var parameter = { TeacherId: id };
 
-            $("#courseId").change(function () {
 
-                DecisionLabel();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetTeacherById", "CourseAssign")',
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(parameter),
+                    success: function (data) {
+                        $("#CreditTaken").val(data.CreditTaken);
+                        $("#CreditLeft").val(data.CreditLeft);
+                    }
+                });
 
-                var courseSelected = $("#courseId").val();
-                var jsonData = { courseId: courseSelected };
+                if (id == 0) {
+                    $("#CreditTaken").val("");
+                    $("#CreditLeft").val("");
+                }
+                return false;
+
+            });
+
+            $("#CourseId").change(function () {
+                var id = $("#CourseId").val();
+                var parameter = { CourseId: id }
+
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("GetCourseById", "CourseAssign")',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(jsonData),
-                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(parameter),
                     success: function (data) {
-
-                        //alert(data.CourseName + " " + data.CourseCredit);
-
-                        $("#courseName").val(data.CourseName);
-                        $("#courseCredit").val(data.CourseCredit);
-                    },
+                        $("#Course_CourseName").val(data.CourseName);
+                        $("#Course_CourseCredit").val(data.CourseCredit);
+                    }
                 });
-                if (courseId == 0) {
-                    $("#courseName").val("");
-                    $("#courseCredit").val("");
+                if (id == 0) {
+                    $("#Course_CourseName").val("");
+                    $("#Course_CourseCredit").val("");
                 }
                 return false;
             });
 
+            
 
-            $("#submit").click(function() {
+            $("#saveButton").click(function() {
                 var errorValue = 0;
-                ResetLabel();
+                //ResetLabel();
                 var departmentId = $("#Departments").val();
 
                 if (departmentId == 0) {
@@ -259,7 +239,7 @@
                 else {
                    // alert("Course Credit: " + $("#courseCredit").val());
 
-                    var creditAvailable = $("#CreditLeft").val() - $("#CourseCredit").val();
+                    var creditAvailable = 6;
                     var status = false;
                     if (creditAvailable < 0) {
 
@@ -286,7 +266,7 @@
                                     $("#AssignErrorLabel").text("This course is already Assigned");
                                     //alert("This course is already Assigned");
                                 }
-                                ResetValue();
+                                //ResetValue();
                             },
                         });
 
