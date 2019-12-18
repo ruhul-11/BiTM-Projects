@@ -16,8 +16,6 @@
 
         @Html.RenderFlashMessages()
 
-
-
         <fieldset>
             <legend>Course Assign to Teacher</legend>
 
@@ -35,9 +33,11 @@
                 @*Teacher Dropdown*@
                 <div class="form-group">
                     @Html.LabelFor(model => model.TeacherId, "Teacher", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <select class="form-control" id="Teachers">
-                        <option value="">--select student--</option>
-                    </select>
+                    <div class="col-md-10">
+                        <select class="form-control" id="Teachers">
+                            <option value="">--select student--</option>
+                        </select>
+                    </div>
                     <label id="TeacherErrorLabel" style="color: red;"></label>
                 </div>
 
@@ -63,9 +63,11 @@
                 @*Course Dropdown List*@
                 <div class="form-group">
                     @Html.Label("Course", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <select class="form-control" id="CourseId">
-                        <option value="">--select course--</option>
-                    </select>
+                    <div class="col-md-10">
+                        <select class="form-control" id="CourseId">
+                            <option value="">--select course--</option>
+                        </select>
+                    </div>
                     <label id="CourseErrorLabel" style="color: red;"></label>
                 </div>
 

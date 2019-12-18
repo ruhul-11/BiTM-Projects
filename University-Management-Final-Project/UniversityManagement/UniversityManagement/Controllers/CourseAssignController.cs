@@ -32,10 +32,7 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Save");
             }
 
-            ViewBag.CourseID = new SelectList(db.Courses, "CourseId", "CourseCode", courseassign.CourseId);
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", courseassign.DepartmentId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "Name", courseassign.TeacherId);
-            return View(courseassign);
+            return RedirectToAction("Save");
         }
 
         public JsonResult GetTeacherByDeptId(int deptId)

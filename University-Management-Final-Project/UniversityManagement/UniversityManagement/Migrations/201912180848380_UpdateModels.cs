@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateTableUpToStory5 : DbMigration
+    public partial class UpdateModels : DbMigration
     {
         public override void Up()
         {
@@ -115,6 +115,29 @@
                 .PrimaryKey(t => t.GradeId);
             
             CreateTable(
+                "dbo.RoomAllocations",
+                c => new
+                    {
+                        RoomAllocationId = c.Int(nullable: false, identity: true),
+                        DepartmentId = c.Int(nullable: false),
+                        CourseId = c.Int(nullable: false),
+                        RoomId = c.Int(nullable: false),
+                        DayId = c.Int(nullable: false),
+                        StartTime = c.Double(nullable: false),
+                        EndTime = c.Double(nullable: false),
+                        RoomStatus = c.String(maxLength: 50, unicode: false),
+                    })
+                .PrimaryKey(t => t.RoomAllocationId)
+                .ForeignKey("dbo.Courses", t => t.CourseId, cascadeDelete: true)
+                .ForeignKey("dbo.Days", t => t.DayId, cascadeDelete: true)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId, cascadeDelete: false)
+                .ForeignKey("dbo.Rooms", t => t.RoomId, cascadeDelete: true)
+                .Index(t => t.DepartmentId)
+                .Index(t => t.CourseId)
+                .Index(t => t.RoomId)
+                .Index(t => t.DayId);
+            
+            CreateTable(
                 "dbo.Rooms",
                 c => new
                     {
@@ -127,16 +150,16 @@
                 "dbo.Students",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        StudentId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 50, unicode: false),
                         RegNo = c.String(maxLength: 50, unicode: false),
                         Email = c.String(nullable: false),
                         ContactNo = c.String(nullable: false, maxLength: 14),
                         Date = c.DateTime(nullable: false),
-                        Address = c.String(nullable: false),
+                        Address = c.String(maxLength: 8000, unicode: false),
                         DepartmentId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.StudentId)
                 .ForeignKey("dbo.Departments", t => t.DepartmentId, cascadeDelete: true)
                 .Index(t => t.DepartmentId);
             
@@ -145,6 +168,10 @@
         public override void Down()
         {
             DropForeignKey("dbo.Students", "DepartmentId", "dbo.Departments");
+            DropForeignKey("dbo.RoomAllocations", "RoomId", "dbo.Rooms");
+            DropForeignKey("dbo.RoomAllocations", "DepartmentId", "dbo.Departments");
+            DropForeignKey("dbo.RoomAllocations", "DayId", "dbo.Days");
+            DropForeignKey("dbo.RoomAllocations", "CourseId", "dbo.Courses");
             DropForeignKey("dbo.CourseAssigns", "TeacherId", "dbo.Teachers");
             DropForeignKey("dbo.Teachers", "DesignationId", "dbo.Designations");
             DropForeignKey("dbo.Teachers", "DepartmentId", "dbo.Departments");
@@ -153,6 +180,10 @@
             DropForeignKey("dbo.Courses", "SemesterId", "dbo.Semesters");
             DropForeignKey("dbo.Courses", "DepartmentId", "dbo.Departments");
             DropIndex("dbo.Students", new[] { "DepartmentId" });
+            DropIndex("dbo.RoomAllocations", new[] { "DayId" });
+            DropIndex("dbo.RoomAllocations", new[] { "RoomId" });
+            DropIndex("dbo.RoomAllocations", new[] { "CourseId" });
+            DropIndex("dbo.RoomAllocations", new[] { "DepartmentId" });
             DropIndex("dbo.Teachers", new[] { "DepartmentId" });
             DropIndex("dbo.Teachers", new[] { "DesignationId" });
             DropIndex("dbo.Courses", new[] { "SemesterId" });
@@ -162,6 +193,7 @@
             DropIndex("dbo.CourseAssigns", new[] { "DepartmentId" });
             DropTable("dbo.Students");
             DropTable("dbo.Rooms");
+            DropTable("dbo.RoomAllocations");
             DropTable("dbo.Grades");
             DropTable("dbo.Days");
             DropTable("dbo.Designations");

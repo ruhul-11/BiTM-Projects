@@ -140,15 +140,17 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoomAllocationController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="DAL\DepartmentGateway.cs" />
     <Compile Include="DataContext\UniversityDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912180537253_CreateTableUpToStory5.cs" />
-    <Compile Include="Migrations\201912180537253_CreateTableUpToStory5.designer.cs">
-      <DependentUpon>201912180537253_CreateTableUpToStory5.cs</DependentUpon>
+    <Compile Include="Migrations\201912180848380_UpdateModels.cs" />
+    <Compile Include="Migrations\201912180848380_UpdateModels.designer.cs">
+      <DependentUpon>201912180848380_UpdateModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\RoomAllocation.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
@@ -204,17 +207,11 @@
     <Content Include="Views\Department\SaveDepartment.cshtml" />
     <Content Include="Views\Department\ViewDetails.cshtml" />
     <Content Include="Views\Course\Save.cshtml" />
-    <Content Include="Views\Course\Delete.cshtml" />
-    <Content Include="Views\Course\Details.cshtml" />
-    <Content Include="Views\Course\Edit.cshtml" />
-    <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Teacher\Save.cshtml" />
-    <Content Include="Views\Teacher\Delete.cshtml" />
-    <Content Include="Views\Teacher\Details.cshtml" />
-    <Content Include="Views\Teacher\Edit.cshtml" />
-    <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\CourseAssign\Save.cshtml" />
     <Content Include="Views\CourseAssign\ViewCourseStatistics.cshtml" />
+    <Content Include="Views\Student\Register.cshtml" />
+    <Content Include="Views\RoomAllocation\Allocate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,8 +230,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912180537253_CreateTableUpToStory5.resx">
-      <DependentUpon>201912180537253_CreateTableUpToStory5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180848380_UpdateModels.resx">
+      <DependentUpon>201912180848380_UpdateModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
