@@ -17,7 +17,7 @@ namespace UniversityManagement.Models
 
         [Column(TypeName = "varchar")]
         [StringLength(50)]
-        public string RegNo { get; set; } // Not Mapped in View. It will be Auto Generated
+        public string RegNo { get; set; } 
 
         [Required]
         [EmailAddress]
@@ -33,7 +33,7 @@ namespace UniversityManagement.Models
 
         [Required(ErrorMessage = "The Field Date is Mandatory.")]
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; } //Current date will be default date
+        public DateTime Date { get; set; } 
 
         [Required]
         [DataType(DataType.MultilineText)]

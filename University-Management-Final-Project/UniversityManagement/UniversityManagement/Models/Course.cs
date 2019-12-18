@@ -33,9 +33,11 @@ namespace UniversityManagement.Models
 
         [Required]
         [Display(Name = "Description")]
+        [Column(TypeName = "varchar")]
         [DataType(DataType.MultilineText)]
         public string CourseDescription { get; set; }
 
+        [Column(TypeName = "varchar")]
         public string CourseAssignTo { get; set; }
 
         public bool CourseStatus { get; set; }

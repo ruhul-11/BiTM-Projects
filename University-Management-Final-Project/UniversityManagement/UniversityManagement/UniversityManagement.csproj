@@ -146,9 +146,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912171522576_ModifyCourseAssign.cs" />
-    <Compile Include="Migrations\201912171522576_ModifyCourseAssign.designer.cs">
-      <DependentUpon>201912171522576_ModifyCourseAssign.cs</DependentUpon>
+    <Compile Include="Migrations\201912180537253_CreateTableUpToStory5.cs" />
+    <Compile Include="Migrations\201912180537253_CreateTableUpToStory5.designer.cs">
+      <DependentUpon>201912180537253_CreateTableUpToStory5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -214,6 +214,7 @@
     <Content Include="Views\Teacher\Edit.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\CourseAssign\Save.cshtml" />
+    <Content Include="Views\CourseAssign\ViewCourseStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -232,8 +233,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912171522576_ModifyCourseAssign.resx">
-      <DependentUpon>201912171522576_ModifyCourseAssign.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912180537253_CreateTableUpToStory5.resx">
+      <DependentUpon>201912180537253_CreateTableUpToStory5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,6 +20,8 @@
 
         <fieldset>
             <legend>Course Assign to Teacher</legend>
+
+            @*Department Dropdown*@
             <div class="col-md-8 col-md-offset-3">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -27,24 +29,19 @@
                         @Html.DropDownList("Departments", null, "--select--", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Department.DepartmentId, "", new { @class = "text-danger" })
                     </div>
+                    <label id="DeptErrorLabel" style="color: red;"></label>
                 </div>
 
-
+                @*Teacher Dropdown*@
                 <div class="form-group">
                     @Html.LabelFor(model => model.TeacherId, "Teacher", htmlAttributes: new { @class = "control-label col-md-2" })
                     <select class="form-control" id="Teachers">
                         <option value="">--select student--</option>
                     </select>
+                    <label id="TeacherErrorLabel" style="color: red;"></label>
                 </div>
 
-                @*<div class="form-group">
-            @Html.LabelFor(m => m.Teacher.TeacherId, "Teacher", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Teachers", null, "--select--", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Teacher.TeacherId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
+                @*Teacher's Credit*@
                 <div class="form-group">
                     @Html.LabelFor(m => m.CreditTaken, "Credit to be taken", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -53,6 +50,7 @@
                     </div>
                 </div>
 
+                @*Teacher's Remaining Credit*@
                 <div class="form-group">
                     @Html.LabelFor(m => m.CreditLeft, "Remaining Credit", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -62,22 +60,16 @@
                 </div>
 
 
-
+                @*Course Dropdown List*@
                 <div class="form-group">
                     @Html.Label("Course", htmlAttributes: new { @class = "control-label col-md-2" })
                     <select class="form-control" id="CourseId">
-                        <option value="">--select student--</option>
+                        <option value="">--select course--</option>
                     </select>
+                    <label id="CourseErrorLabel" style="color: red;"></label>
                 </div>
 
-                @*<div class="form-group">
-            @Html.LabelFor(m => m.Course.CourseName, "Course", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Courses", null, "--select--", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Course.CourseName, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
+                @*Course Name*@
                 <div class="form-group">
                     @Html.LabelFor(m => m.Course.CourseName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -86,6 +78,7 @@
                     </div>
                 </div>
 
+                @*Course Credit*@
                 <div class="form-group">
                     @Html.LabelFor(m => m.Course.CourseCredit, "Credit", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -100,24 +93,33 @@
                         <input type="submit" value="Assign" class="btn btn-default" />
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p>
+                            <label id="AssignSuccessLabel" style="color: green;"></label>
+                            <label id="AssignErrorLabel" style="color: red;"></label>
+                        </p>
+                    </div>
+                </div>
             </div>
         </fieldset>
     </div>
 }
 
 @section Scripts {
+    
     <script>
         $(document).ready(function () {
             $("#Departments").change(function () {
 
-                //ResetLabel();
-
+                
                 $("#Teachers").empty();
                 var departmentId = $("#Departments").val();
-                var jasonData = { deptId: departmentId };
+                var parameter = { deptId: departmentId };
                 $("#Teachers").append('<option value=0>--Select Teacher--</option>');
                 $.ajax({
-                    
+
                     type: "POST",
                     url: '@Url.Action("GetTeacherByDeptId", "CourseAssign")',
                     contentType: "application/json; charset=utf-8",
@@ -126,64 +128,78 @@
                         $.each(teacherList, function(key, value) {
 
                             $("#Teachers").append('<option value=' + value.TeacherId + '>' + value.Name + '</option>');
-                            
-                        });
-                    },
-
-                });
-
-                
-
-                @*$("#courseId").empty();
-                var jasonData = { deptId: departmentId };
-                $("#courseId").append('<option value=0>Select Course</option>');
-                $.ajax({
-
-                    type: "POST",
-                    url: '@Url.Action("GetCourseByDeptId","CourseAssign")',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(jasonData),
-                    dataType: "json",
-                    success: function (data) {
-                        $.each(data, function (key, value) {
-
-                            $("#courseId").append('<option value=' + value.Id + '>' + value.CourseCode + '</option>');
 
                         });
                     },
 
                 });
 
-                return false;*@
-            });
+                        $("#Teachers").change(function () {
+                            var id = $("#Teachers").val();
+                            var parameter = { TeacherId: id }
 
-            @*$("#teacherId").change(function () {
+                            $.ajax({
+                                type: "POST",
+                                url: '@Url.Action("GetTeacherById", "CourseAssign")',
+                                contentType: "application/json;charset=utf-8",
+                                data: JSON.stringify(parameter),
+                                success: function (data) {
+                                    $("#CreditTaken").val(data.CreditTaken);
+                                    $("#CreditLeft").val(data.CreditLeft);
+                                }
+                            });
 
-                var teacherSelected = $("#teacherId").val();
-                var jsonData = { TeacherId: teacherSelected };
+                            if (TeacherId == 0) {
+                                $("#CreditTaken").val("");
+                                $("#CreditLeft").val("");
+                            }
+                            return false;
+
+                        });
+
+                $("#CourseId").empty();
+                var departmentId = $("#Departments").val();
+                var parameter = { deptId: departmentId };
+                $("#CourseId").append('<option value=0>--Select Course--</option>');
                 $.ajax({
+
                     type: "POST",
-                    url: '@Url.Action("GetTeacherById","CourseAssign")',
+                    url: '@Url.Action("GetCourseByDeptId", "CourseAssign")',
                     contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(jsonData),
-                    dataType: "json",
-                    success: function (data) {
+                    data: JSON.stringify(parameter),
+                    success: function(courseList) {
+                        $.each(courseList, function(key, value) {
 
-                       // alert(data.CreditTaken + " " + data.CreditLeft);
+                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CourseName + '</option>');
 
-                        $("#creditTaken").val(data.CreditTaken);
-                        $("#creditLeft").val(data.CreditLeft);
-
+                        });
                     },
 
                 });
 
-                if (TeacherId == 0) {
-                    $("#creditTaken").val("");
-                    $("#creditLeft").val("");
-                }
-                return false;
+                        $("#CourseId").change(function () {
+                            var id = $("#CourseId").val();
+                            var parameter = { CourseId: id }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("GetCourseById", "CourseAssign")',
+                            contentType: "application/json;charset=utf-8",
+                            data: JSON.stringify(parameter),
+                            success: function (data) {
+                                $("#Course_CourseName").val(data.CourseName);
+                                $("#Course_CourseCredit").val(data.CourseCredit);
+                            }
+                        });
+                            if (courseId == 0) {
+                                $("#Course_CourseName").val("");
+                                $("#Course_CourseCredit").val("");
+                            }
+                            return false;
+                        });
             });
+
+            
 
             $("#courseId").change(function () {
 
@@ -210,47 +226,47 @@
                     $("#courseCredit").val("");
                 }
                 return false;
-            });*@
+            });
 
 
-            @*$("#submit").click(function() {
+            $("#submit").click(function() {
                 var errorValue = 0;
-                // ResetLabel();
-                var departmentId = $("#departmentId").val();
+                ResetLabel();
+                var departmentId = $("#Departments").val();
 
                 if (departmentId == 0) {
-                    $("#DeptErrorLabel").text("Select  Department ");
+                    $("#DeptErrorLabel").text(" --Select  Department-- ");
                     errorValue = 1;
                 }
 
-                var teacherId = $("#teacherId").val();
+                var teacherId = $("#Teachers").val();
 
                 if (teacherId == 0) {
-                    $("#TeacherErrorLabel").text("Select Teacher ");
+                    $("#TeacherErrorLabel").text(" -- Select Teacher-- ");
                     errorValue = 1;
                 }
 
-                var courseId = $("#courseId").val();
+                var courseId = $("#CourseId").val();
                 if (courseId == 0) {
-                    $("#CourseErrorLabel").text("Select  Course ");
+                    $("#CourseErrorLabel").text(" --Select  Course-- ");
                     errorValue = 1;
                 }
                 if (errorValue == 1) {
                     return false;
-                } 
+                }
                 else {
                    // alert("Course Credit: " + $("#courseCredit").val());
 
-                    var creditAvailable = $("#creditLeft").val() - $("#courseCredit").val();
+                    var creditAvailable = $("#CreditLeft").val() - $("#CourseCredit").val();
                     var status = false;
                     if (creditAvailable < 0) {
 
                         status = confirm("This will cross total assigned credit for this teacher. Do You Proced...");
                     }
                     if (status == true || creditAvailable > 0) {
-                        
+
                         var totalTakenCredit = $("#creditTaken").val();
-                    
+
                         var jasonData = { DepartmentId: departmentId, TeacherId: teacherId, CourseId: courseId, CreditTaken: totalTakenCredit, CreditLeft: creditAvailable };
                         $.ajax({
                             type: "POST",
@@ -272,14 +288,14 @@
                             },
                         });
 
-                    } 
+                    }
                     return false;
                 }
-                
+
             });
-            return false;*@
+            return false;
         });
-        
+
     </script>
-    
+
 }

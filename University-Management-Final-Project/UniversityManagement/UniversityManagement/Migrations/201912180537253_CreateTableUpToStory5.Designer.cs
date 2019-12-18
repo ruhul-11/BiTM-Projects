@@ -7,13 +7,13 @@ namespace UniversityManagement.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class ModifyCourseAssign : IMigrationMetadata
+    public sealed partial class CreateTableUpToStory5 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModifyCourseAssign));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateTableUpToStory5));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912171522576_ModifyCourseAssign"; }
+            get { return "201912180537253_CreateTableUpToStory5"; }
         }
         
         string IMigrationMetadata.Source

@@ -20,68 +20,68 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
-            //context.Semesters.AddOrUpdate(
+            context.Semesters.AddOrUpdate(
 
-            //    new Semester() { Name = "1st Semester" },
-            //    new Semester() { Name = "2nd Semester" },
-            //    new Semester() { Name = "3rd Semester" },
-            //    new Semester() { Name = "4th Semester" },
-            //    new Semester() { Name = "5th Semester" },
-            //    new Semester() { Name = "6th Semester" },
-            //    new Semester() { Name = "7th Semester" },
-            //    new Semester() { Name = "8th Semester" }
+                new Semester() { Name = "1st Semester" },
+                new Semester() { Name = "2nd Semester" },
+                new Semester() { Name = "3rd Semester" },
+                new Semester() { Name = "4th Semester" },
+                new Semester() { Name = "5th Semester" },
+                new Semester() { Name = "6th Semester" },
+                new Semester() { Name = "7th Semester" },
+                new Semester() { Name = "8th Semester" }
 
-            //    );
+                );
 
-            //context.Grades.AddOrUpdate(
+            context.Grades.AddOrUpdate(
 
-            //  new Grade() { Name = "A+" },
-            //  new Grade() { Name = "A" },
-            //  new Grade() { Name = "A-" },
-            //  new Grade() { Name = "B+" },
-            //  new Grade() { Name = "B" },
-            //  new Grade() { Name = "B-" },
-            //  new Grade() { Name = "C+" },
-            //  new Grade() { Name = "C" },
-            //  new Grade() { Name = "C-" },
-            //  new Grade() { Name = "D+" },
-            //  new Grade() { Name = "D" },
-            //  new Grade() { Name = "D-" },
-            //  new Grade() { Name = "F" }
+              new Grade() { Name = "A+" },
+              new Grade() { Name = "A" },
+              new Grade() { Name = "A-" },
+              new Grade() { Name = "B+" },
+              new Grade() { Name = "B" },
+              new Grade() { Name = "B-" },
+              new Grade() { Name = "C+" },
+              new Grade() { Name = "C" },
+              new Grade() { Name = "C-" },
+              new Grade() { Name = "D+" },
+              new Grade() { Name = "D" },
+              new Grade() { Name = "D-" },
+              new Grade() { Name = "F" }
 
-            //  );
-            //context.Days.AddOrUpdate(
-            //    new Day() { Name = "Saturday" },
-            //    new Day() { Name = "Sunday" },
-            //    new Day() { Name = "Monday" },
-            //    new Day() { Name = "Tuesday" },
-            //    new Day() { Name = "Wednesday" },
-            //    new Day() { Name = "Thursday" }
-            //    );
+              );
+            context.Days.AddOrUpdate(
+                new Day() { Name = "Saturday" },
+                new Day() { Name = "Sunday" },
+                new Day() { Name = "Monday" },
+                new Day() { Name = "Tuesday" },
+                new Day() { Name = "Wednesday" },
+                new Day() { Name = "Thursday" }
+                );
 
-            //context.Designations.AddOrUpdate(
+            context.Designations.AddOrUpdate(
 
-            //  new Designation() { Name = "Professor" },
-            //  new Designation() { Name = "Associate Professor" },
-            //  new Designation() { Name = "Assistent Professor" },
-            //  new Designation() { Name = "Lecturer" },
-            //  new Designation() { Name = "Instructor" }
+              new Designation() { Name = "Professor" },
+              new Designation() { Name = "Associate Professor" },
+              new Designation() { Name = "Assistent Professor" },
+              new Designation() { Name = "Lecturer" },
+              new Designation() { Name = "Instructor" }
 
-            //  );
+              );
 
-            //context.Rooms.AddOrUpdate(
+            context.Rooms.AddOrUpdate(
 
-            //    new Room() { Name = "101" },
-            //    new Room() { Name = "102" },
-            //    new Room() { Name = "201" },
-            //    new Room() { Name = "202" },
-            //    new Room() { Name = "301" },
-            //    new Room() { Name = "302" },
-            //    new Room() { Name = "401" },
-            //    new Room() { Name = "402" },
-            //    new Room() { Name = "501" },
-            //    new Room() { Name = "502" }
-            //    );
+                new Room() { Name = "101" },
+                new Room() { Name = "102" },
+                new Room() { Name = "201" },
+                new Room() { Name = "202" },
+                new Room() { Name = "301" },
+                new Room() { Name = "302" },
+                new Room() { Name = "401" },
+                new Room() { Name = "402" },
+                new Room() { Name = "501" },
+                new Room() { Name = "502" }
+                );
         }
     }
 }

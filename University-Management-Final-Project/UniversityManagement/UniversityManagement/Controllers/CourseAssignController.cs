@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,7 +32,7 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Save");
             }
 
-            ViewBag.CourseID = new SelectList(db.Courses, "CourseId", "CourseCode", courseassign.CourseID);
+            ViewBag.CourseID = new SelectList(db.Courses, "CourseId", "CourseCode", courseassign.CourseId);
             ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", courseassign.DepartmentId);
             ViewBag.TeacherId = new SelectList(db.Teachers, "TeacherId", "Name", courseassign.TeacherId);
             return View(courseassign);
@@ -46,19 +47,78 @@ namespace UniversityManagement.Controllers
         public JsonResult GetCourseByDeptId(int deptId)
         {
             var courses = db.Courses.Where(m => m.DepartmentId == deptId).ToList();
-            return Json(courses, JsonRequestBehavior.AllowGet);
+            return Json(courses);
         }
 
         public JsonResult GetTeacherById(int TeacherId)
         {
             var teacher = db.Teachers.FirstOrDefault(m => m.TeacherId == TeacherId);
-            return Json(teacher, JsonRequestBehavior.AllowGet);
+            return Json(teacher);
         }
 
         public JsonResult GetCourseById(int courseId)
         {
             Course aCourse = db.Courses.FirstOrDefault(m => m.CourseId == courseId);
-            return Json(aCourse, JsonRequestBehavior.AllowGet);
+            return Json(aCourse);
+        }
+
+        //Course Statistics
+        public ActionResult ViewCourseStatistics()
+        {
+            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
+            return View();
+        }
+
+        public JsonResult ShowCourseStatistics(int deptId)
+        {
+            var courses = db.Courses.Where(m => m.DepartmentId == deptId).ToList();
+            return Json(courses, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult SaveCourseAssign(CourseAssign courseAssign)
+        {
+            var checkAssignedCourses =
+                db.CourseAssigns.Where(m => m.CourseId == courseAssign.CourseId && m.Course.CourseStatus == true)
+                    .ToList();
+
+            if (checkAssignedCourses.Count > 0)
+                return Json(false);
+
+            else
+            {
+                db.CourseAssigns.Add(courseAssign);
+                db.SaveChanges();
+
+                var teacher = db.Teachers.FirstOrDefault(m => m.TeacherId == courseAssign.TeacherId);
+
+                if (teacher != null)
+                {
+                    teacher.CreditLeft = courseAssign.CreditLeft;
+                    db.Teachers.AddOrUpdate(teacher);
+                    db.SaveChanges();
+
+                    var course = db.Courses.FirstOrDefault(m => m.CourseId == courseAssign.CourseId);
+
+                    if (course != null)
+                    {
+                        course.CourseStatus = true;
+                        course.CourseAssignTo = teacher.Name;
+                        db.Courses.AddOrUpdate(course);
+                        db.SaveChanges();
+
+                        return Json(true);
+                    }
+                    else
+                    {
+                        return Json(false);
+                    }
+                }
+                else
+                {
+                    return Json(false);
+                }
+            }
         }
     }
 }
