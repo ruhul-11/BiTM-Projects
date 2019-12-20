@@ -8,6 +8,7 @@ namespace UniversityManagement.Models
     public class Department
     {
         [Key]
+        //[Required(ErrorMessage = "Please Select a Department")]
         public int DepartmentId { get; set; }
 
         [Required(ErrorMessage = "Department Code is Required")]

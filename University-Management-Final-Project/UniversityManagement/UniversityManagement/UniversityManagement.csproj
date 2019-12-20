@@ -221,6 +221,7 @@
     <Content Include="Views\EnrollCourses\Details.cshtml" />
     <Content Include="Views\EnrollCourses\Edit.cshtml" />
     <Content Include="Views\EnrollCourses\Index.cshtml" />
+    <Content Include="Views\RoomAllocation\UnallocatedClassRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
