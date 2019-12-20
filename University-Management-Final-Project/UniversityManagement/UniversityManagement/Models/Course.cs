@@ -14,44 +14,47 @@ namespace UniversityManagement.Models
         public int CourseId { get; set; }
 
         [Required(ErrorMessage = "Course Code is Required")]
-        [Display(Name = "Code")]
+        [Display(Name = "Course Code")]
         [Column(TypeName = "varchar")]
         [StringLength(100, MinimumLength = 5, ErrorMessage = "Course Code Must be 5 characters long")]
         [Remote("IsCodeUnique", "Course", ErrorMessage = "Code already exists!")]
-        public string CourseCode { get; set; }
+        public string Code { get; set; }
 
         [Required(ErrorMessage = "Course Name is Reqired")]
-        [Display(Name = "Name")]
+        [Display(Name = "Course Name")]
         [Column(TypeName = "varchar")]
-        [Remote("IsNameUnique", "Course", ErrorMessage = "Code already exists!")]
-        public string CourseName { get; set; }
+        [Remote("IsNameUnique", "Course", ErrorMessage = "Name already exists!")]
+        public string Name { get; set; }
 
-        [Required]
-        [Display(Name = "Credit")]
+        [Required(ErrorMessage = "This field is Required")]
+        [Display(Name = "Course Credit")]
         [Range(0.5, 5.0, ErrorMessage = "Credit must be within 0.5 to 5.0")]
-        public double CourseCredit { get; set; }
+        public double Credit { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is Required")]
         [Display(Name = "Description")]
         [Column(TypeName = "varchar")]
         [DataType(DataType.MultilineText)]
-        public string CourseDescription { get; set; }
+        public string Description { get; set; }
 
         [Column(TypeName = "varchar")]
-        public string CourseAssignTo { get; set; }
+        [StringLength(50)]
+        public string AssignTo { get; set; }
 
-        public bool CourseStatus { get; set; }
+        public bool Status { get; set; }
 
+        //Foreign Key
+        [Required(ErrorMessage = "This field is Required")]
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
-
         public virtual Department Department { get; set; }
 
+        //Foreign Key
+        [Required(ErrorMessage = "This field is Required")]
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
         [ForeignKey("SemesterId")]
-
         public virtual Semester Semester { get; set; }
 
 

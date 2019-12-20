@@ -76,7 +76,7 @@ namespace UniversityManagement.Controllers
         public JsonResult SaveCourseAssign(CourseAssign courseAssign)
         {
             var checkAssignedCourses =
-                db.CourseAssigns.Where(m => m.CourseId == courseAssign.CourseId && m.Course.CourseStatus == true)
+                db.CourseAssigns.Where(m => m.CourseId == courseAssign.CourseId && m.Course.Status == true)
                     .ToList();
 
             if (checkAssignedCourses.Count > 0)
@@ -91,7 +91,7 @@ namespace UniversityManagement.Controllers
 
                 if (teacher != null)
                 {
-                    teacher.CreditLeft = courseAssign.CreditLeft;
+                    teacher.CreditLeft = courseAssign.Teacher.CreditLeft;  //Need to check (courseAssign.Teacher.CreditLeft)
                     db.Teachers.AddOrUpdate(teacher);
                     db.SaveChanges();
 
@@ -99,8 +99,8 @@ namespace UniversityManagement.Controllers
 
                     if (course != null)
                     {
-                        course.CourseStatus = true;
-                        course.CourseAssignTo = teacher.Name;
+                        course.Status = true;
+                        course.AssignTo = teacher.Name;
                         db.Courses.AddOrUpdate(course);
                         db.SaveChanges();
 

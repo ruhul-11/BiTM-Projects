@@ -43,19 +43,19 @@
 
                 @*Teacher's Credit*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.CreditTaken, "Credit to be taken", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(m => m.Teacher.CreditTaken, "Credit to be taken", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.CreditTaken, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.CreditTaken, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Teacher.CreditTaken, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Teacher.CreditTaken, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 @*Teacher's Remaining Credit*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.CreditLeft, "Remaining Credit", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(m => m.Teacher.CreditLeft, "Remaining Credit", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.CreditLeft, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.CreditLeft, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Teacher.CreditLeft, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Teacher.CreditLeft, "", new { @class = "text-danger" })
                     </div>
                 </div>
 

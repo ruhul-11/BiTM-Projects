@@ -36,5 +36,9 @@ namespace UniversityManagement.Controllers
             return View(teacher);
         }
 
+        public JsonResult IsEmailExists(string Email)
+        {
+            return Json(!db.Teachers.Any(m => m.Email == Email), JsonRequestBehavior.AllowGet);
+        }
     }
 }

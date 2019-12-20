@@ -163,3 +163,5 @@ I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManage
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.csproj.CopyComplete
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\bin\Vereyon.Web.FlashMessage.dll
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.csprojAssemblyReference.cache
+I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.PreparedAllModelClasses.resources
+I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.csproj.GenerateResource.cache

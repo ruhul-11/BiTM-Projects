@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,6 +39,44 @@ namespace UniversityManagement.Controllers
             ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", course.DepartmentId);
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name", course.SemesterId);
             return View(course);
+        }
+
+
+        public JsonResult IsCodeUnique(string Code)
+        {
+            return Json(!db.Courses.Any(m => m.Code == Code), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsNameUnique(string Name)
+        {
+            return Json(!db.Courses.Any(course => course.Name == Name), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UnassignCourses()
+        {
+            return View();
+        }
+
+
+        public JsonResult UnassignAllCourses(bool decision)
+        {
+            var courses = db.Courses.Where(m => m.Status == true).ToList();
+            if (courses.Count == 0)
+            {
+                return Json(false);
+            }
+            else
+            {
+                foreach (var course in courses)
+                {
+                    course.Status = false;
+                    course.AssignTo = "";
+                    db.Courses.AddOrUpdate(course);
+                    db.SaveChanges();
+                }
+                return Json(true);
+
+            }
         }
 
     }

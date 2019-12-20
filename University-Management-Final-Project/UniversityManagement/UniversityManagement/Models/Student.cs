@@ -19,8 +19,8 @@ namespace UniversityManagement.Models
         [StringLength(50)]
         public string RegNo { get; set; } 
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email is Required")]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
         [Remote("IsEmailExist", "Student", ErrorMessage = "Email already exists!")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Invalid Email")]
         public string Email { set; get; }
@@ -35,13 +35,14 @@ namespace UniversityManagement.Models
         [DataType(DataType.Date)]
         public DateTime Date { get; set; } 
 
-        
         [Column(TypeName = "varchar")]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "The Field Department is Mandatory.")]
+        //Foreign Key
+        [Required(ErrorMessage = "The Field Department is Required.")]
         public int DepartmentId { get; set; }
+        [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
     }
 }

@@ -148,12 +148,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912201138424_PreparedAllModelClasses.cs" />
+    <Compile Include="Migrations\201912201138424_PreparedAllModelClasses.designer.cs">
+      <DependentUpon>201912201138424_PreparedAllModelClasses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ClassSchedule.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseAssign.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\EnrollCourse.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomAllocation.cs" />
@@ -224,6 +230,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912201138424_PreparedAllModelClasses.resx">
+      <DependentUpon>201912201138424_PreparedAllModelClasses.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
