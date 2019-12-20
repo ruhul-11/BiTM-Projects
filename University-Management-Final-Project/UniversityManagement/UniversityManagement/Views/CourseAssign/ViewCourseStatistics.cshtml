@@ -14,10 +14,10 @@
 
         <div class="col-md-8 col-md-offset-3">
             <div class="form-group">
-                @Html.LabelFor(model => model.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("Departments", null, "--select--", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
                 </div>
                 <label id="DeptErrorLabel" style="color: red;"></label>
             </div>

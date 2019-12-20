@@ -139,6 +139,7 @@
     <Compile Include="Controllers\CourseAssignController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\EnrollCoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomAllocationController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -208,12 +209,18 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Department\SaveDepartment.cshtml" />
     <Content Include="Views\Department\ViewDetails.cshtml" />
-    <Content Include="Views\Course\Save.cshtml" />
+    <Content Include="Views\Course\SaveCourse.cshtml" />
     <Content Include="Views\Teacher\Save.cshtml" />
     <Content Include="Views\CourseAssign\Save.cshtml" />
     <Content Include="Views\CourseAssign\ViewCourseStatistics.cshtml" />
     <Content Include="Views\Student\Register.cshtml" />
     <Content Include="Views\RoomAllocation\Allocate.cshtml" />
+    <Content Include="Views\Course\UnassignCourses.cshtml" />
+    <Content Include="Views\EnrollCourses\Create.cshtml" />
+    <Content Include="Views\EnrollCourses\Delete.cshtml" />
+    <Content Include="Views\EnrollCourses\Details.cshtml" />
+    <Content Include="Views\EnrollCourses\Edit.cshtml" />
+    <Content Include="Views\EnrollCourses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

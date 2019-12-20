@@ -21,10 +21,10 @@
 
                 @*Department Dropdown*@
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownList("Departments", null, "--Select Department--", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
                     </div>
                     <label id="deptErrorMessage" style="color: red;"></label>
                 </div>

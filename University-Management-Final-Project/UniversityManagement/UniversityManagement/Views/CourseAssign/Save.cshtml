@@ -2,7 +2,7 @@
 @model UniversityManagement.Models.CourseAssign
 
 @{
-    ViewBag.Title = "Save";
+    ViewBag.Title = "SaveCourseAssign";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -22,10 +22,10 @@
             @*Department Dropdown*@
             <div class="col-md-8 col-md-offset-3">
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(m => m.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownList("Departments", null, "--select--", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Department.DepartmentId, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.Course.Department.DepartmentId, "", new { @class = "text-danger" })
                     </div>
                     <label id="DeptErrorLabel" style="color: red;"></label>
                 </div>
@@ -73,19 +73,19 @@
 
                 @*Course Name*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Course.CourseName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(m => m.Course.Name, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Course.CourseName, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Course.CourseName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Course.Name, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Course.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 @*Course Credit*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Course.CourseCredit, "Credit", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(m => m.Course.Credit, "Credit", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Course.CourseCredit, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Course.CourseCredit, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Course.Credit, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Course.Credit, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -154,7 +154,7 @@
                     success: function(courseList) {
                         $.each(courseList, function(key, value) {
 
-                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.CourseName + '</option>');
+                            $("#CourseId").append('<option value=' + value.CourseId + '>' + value.Name + '</option>');
 
                         });
                     },
@@ -198,13 +198,13 @@
                     contentType: "application/json;charset=utf-8",
                     data: JSON.stringify(parameter),
                     success: function (data) {
-                        $("#Course_CourseName").val(data.CourseName);
-                        $("#Course_CourseCredit").val(data.CourseCredit);
+                        $("#Course_Name").val(data.Name);
+                        $("#Course_Credit").val(data.Credit);
                     }
                 });
                 if (id == 0) {
-                    $("#Course_CourseName").val("");
-                    $("#Course_CourseCredit").val("");
+                    $("#Course_Name").val("");
+                    $("#Course_Credit").val("");
                 }
                 return false;
             });
@@ -217,7 +217,7 @@
                 var departmentId = $("#Departments").val();
 
                 if (departmentId == 0) {
-                    $("#DeptErrorLabel").text(" --Select  Department-- ");
+                    $("#DeptErrorLabel").text(" --Select Department--");
                     errorValue = 1;
                 }
 
@@ -230,7 +230,7 @@
 
                 var courseId = $("#CourseId").val();
                 if (courseId == 0) {
-                    $("#CourseErrorLabel").text(" --Select  Course-- ");
+                    $("#CourseErrorLabel").text(" --Select Course-- ");
                     errorValue = 1;
                 }
                 if (errorValue == 1) {

@@ -17,7 +17,7 @@ namespace UniversityManagement.Controllers
     {
         private UniversityDbContext db = new UniversityDbContext();
 
-        public ActionResult Save()
+        public ActionResult SaveCourse()
         {
             ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code");
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name");
@@ -26,7 +26,7 @@ namespace UniversityManagement.Controllers
 
         
         [HttpPost]
-        public ActionResult Save([Bind(Include = "CourseId,CourseCode,CourseName,CourseCredit,CourseDescription,CourseAssignTo,CourseStatus,DepartmentId,SemesterId")] Course course)
+        public ActionResult SaveCourse([Bind(Include = "CourseId,CourseCode,CourseName,CourseCredit,CourseDescription,CourseAssignTo,CourseStatus,DepartmentId,SemesterId")] Course course)
         {
             if (ModelState.IsValid)
             {
