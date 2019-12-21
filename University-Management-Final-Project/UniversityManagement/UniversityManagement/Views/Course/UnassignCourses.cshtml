@@ -50,12 +50,12 @@
 
             if (decision == true) {
 
-                var jsonData = { decision: decision };
+                var parameter = { decision: decision };
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("UnassignAllCourses", "Course")',
                     contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(jsonData),
+                    data: JSON.stringify(parameter),
                     dataType: "json",
                     success: function (data) {
 
