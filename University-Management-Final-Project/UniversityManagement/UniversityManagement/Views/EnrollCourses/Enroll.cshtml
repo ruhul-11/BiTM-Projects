@@ -11,22 +11,24 @@
 <br />
 <br />
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @*@Html.AntiForgeryToken()*@
-    
-<div class="form-horizontal">
-    @Html.RenderFlashMessages()
-    <fieldset class="box-75">
+
+    <div class="form-horizontal">
+        @Html.RenderFlashMessages()
+        <fieldset class="box-75">
             @*<legend>Save Course</legend>*@
             <h2 class="text-center">Enroll in a Course</h2>
             <hr />
             <div class="col-md-12">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @*Student DropdownList*@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Student.RegNo, "Student Reg. No", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("StudentId", null, " -- Select Registration -- ", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Registrations", null, " -- Select Registration -- ", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Student.RegNo, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -58,14 +60,18 @@
                     </div>
                 </div>
 
+
                 @*Course Dropdown*@
                 <div class="form-group">
                     @Html.LabelFor(model => model.CourseId, "Select Course", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("CourseId", null, " -- Select Course -- ", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                        <select class="form-control" id="CourseId">
+                            <option value=""> -- Select Course -- </option>
+                        </select>
                     </div>
+                    <label id="courseIdErrorMessage" style="color: red;"></label>
                 </div>
+
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.EnrollDate, htmlAttributes: new { @class = "control-label col-md-4" })
@@ -77,17 +83,143 @@
 
                 <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
-                        <input type="submit" value="Enroll" class="btn btn-success btn-block" />
+                        <input type="submit" value="Enroll" id="enrollButton" class="btn btn-success btn-block" />
                         <br />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <label id="enrollSucessMessage" style="color: green"></label>
+                        <label id="enrollErrorMessage" style="color: red"></label>
                     </div>
                 </div>
             </div>
         </fieldset>
 
 
-</div>
+    </div>
 }
 
 @*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+
+
+
+
+        $("#Registrations").change(function () {
+            var studentId = $("#Registrations").val();
+            var parameter = { studentId: studentId };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetStudentbyId", "EnrollCourses")',
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(parameter),
+                    success: function (data) {
+                        $("#Student_Name").val(data.Name);
+                        $("#Student_Email").val(data.Email);
+                        $("#Student_Department_Name").val(data.Department.Name);
+
+                        var deptId = data.Department.DepartmentId;
+
+                        $("#CourseId").empty();
+                         var parameter = { deptId: deptId };
+                         //alert(deptCode);
+                         $.ajax({
+                             type: "POST",
+                             url: '@Url.Action("GetCoursesbyDeptId", "EnrollCourses")',
+                             contentType: "application/json; charset=utf-8",
+                             data: JSON.stringify(parameter),
+                             dataType: "json",
+                             success: function (data) {
+                                 $.each(data, function (key, value) {
+                                     $("#CourseId").append('<option value=' + value.CourseId + '>' + value.Name + '</option>');
+                                 });
+                             },
+                         });
+                    }
+                });
+
+                if (studentId == 0) {
+                        $("#Student_Name").val("");
+                        $("#Student_Email").val("");
+                        $("#Student_Department_Name").val("");
+                    }
+                return false;
+
+            });
+
+
+
+        $("#enrollButton").click(function () {
+
+            $("#enrollSucessMessage").text("");
+            $("#enrollErrorMessage").text("");
+
+            var regNo = $("#Registrations").val();
+            if (regNo == "") {
+                $("#registrationIdErrorMessage").text("Select Your Registration No");
+                return false;
+            }
+            var date = $("#EnrollDate").val();
+            if (date == "") {
+               // alert("Select Date");
+
+                $("#dateErrorMessage").text("Select Date");
+                return false;
+            }
+            var courseId = $("#CourseId").val();
+
+            if (courseId == "") {
+                $("#courseIdErrorMessage").text("Select a Course");
+            }
+
+            var jsonData = { regNo: regNo, courseId: courseId };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("IsAlreadyEnrolled","EnrollCourse")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(jsonData),
+                dataType: "json",
+                success: function (data) {
+                    if (data == false) {
+                        var jsonData1 = { RegistrationNo: regNo, CourseId: courseId, EnrollDate: date };
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("EnrollStudentToCourse", "EnrollCourse")',
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(jsonData1),
+                            dataType: "json",
+                            success: function (data1) {
+                                $("#enrollSucessMessage").text("Course Enrolled Successfully  !");
+                                $("#Registrations").prop("selectedIndex", 0);
+                                $("#Student_Name").val("");
+                                $("#Student_Email").val("");
+                                $("#Student_Department_Name").val("");
+                                $("#CourseId").empty();
+                                $("#EnrollDate").val("");
+                               // $("#enrollDate").val('2016-05-09');
+                            },
+                        });
+                        return false;
+                    }
+                    $("#enrollErrorMessage").text("This Student is already enrolled in this course");
+                    return false;
+                },
+            });
+            return false;
+        });
+    });
+
+    </script>
+}

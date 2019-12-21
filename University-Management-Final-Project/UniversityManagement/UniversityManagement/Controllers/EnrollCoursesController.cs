@@ -20,13 +20,13 @@ namespace UniversityManagement.Controllers
 
         public ActionResult Enroll()
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code");
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Name");
+            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code");
+            ViewBag.Registrations = new SelectList(db.Students, "StudentId", "RegNo");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Enroll([Bind(Include = "EnrollCourseId,StudentId,CourseId")] EnrollCourse enrollCourse)
+        public ActionResult Enroll(EnrollCourse enrollCourse)
         {
             if (ModelState.IsValid)
             {
@@ -35,15 +35,16 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Enroll");
             }
 
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code", enrollCourse.CourseId);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Name", enrollCourse.StudentId);
-            return View(enrollCourse);
+            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code", enrollCourse.CourseId);
+            ViewBag.Registrations = new SelectList(db.Students, "StudentId", "RegNo", enrollCourse.StudentId);
+            //return View(enrollCourse);
+            return RedirectToAction("Enroll");
         }
 
 
-        public JsonResult GetStudentById(string studentRegNo)
+        public JsonResult GetStudentById(int studentId)
         {
-            var students = db.Students.Where(m => m.RegNo == studentRegNo).ToList();
+            var students = db.Students.Where(m => m.StudentId == studentId).First();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
 
