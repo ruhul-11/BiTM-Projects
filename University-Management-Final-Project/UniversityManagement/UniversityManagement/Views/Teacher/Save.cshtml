@@ -11,7 +11,7 @@
 
 @using (Html.BeginForm())
 {
-    
+
     <div class="form-horizontal">
 
         @Html.RenderFlashMessages()
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.DesignationId, "Designation", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("DesignationId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("DesignationId", null, "-- Select Designation --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.DesignationId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownList("DepartmentId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("DepartmentId", null, "-- Select Department --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -92,5 +92,12 @@
 }
 
 @*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

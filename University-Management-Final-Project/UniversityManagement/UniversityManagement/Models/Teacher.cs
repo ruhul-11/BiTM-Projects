@@ -30,7 +30,7 @@ namespace UniversityManagement.Models
         [StringLength(50)]
         [EmailAddress(ErrorMessage = "Invalid Email")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
-        [Remote("IsEmailExist", "Teacher", ErrorMessage = "Email already exists!")]
+        [Remote("IsEmailExists", "Teacher", ErrorMessage = "Email already exists!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Contact No is Required")]

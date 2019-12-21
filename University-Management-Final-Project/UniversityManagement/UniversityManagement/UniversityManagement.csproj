@@ -52,6 +52,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -153,6 +156,10 @@
     <Compile Include="Migrations\201912201138424_PreparedAllModelClasses.designer.cs">
       <DependentUpon>201912201138424_PreparedAllModelClasses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912201529128_Update-EnrollCourseModel.cs" />
+    <Compile Include="Migrations\201912201529128_Update-EnrollCourseModel.designer.cs">
+      <DependentUpon>201912201529128_Update-EnrollCourseModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
     <Compile Include="Models\Course.cs" />
@@ -209,19 +216,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Department\SaveDepartment.cshtml" />
     <Content Include="Views\Department\ViewDetails.cshtml" />
-    <Content Include="Views\Course\SaveCourse.cshtml" />
+    <Content Include="Views\Course\Save.cshtml" />
     <Content Include="Views\Teacher\Save.cshtml" />
     <Content Include="Views\CourseAssign\Save.cshtml" />
     <Content Include="Views\CourseAssign\ViewCourseStatistics.cshtml" />
     <Content Include="Views\Student\Register.cshtml" />
     <Content Include="Views\RoomAllocation\Allocate.cshtml" />
     <Content Include="Views\Course\UnassignCourses.cshtml" />
-    <Content Include="Views\EnrollCourses\Create.cshtml" />
-    <Content Include="Views\EnrollCourses\Delete.cshtml" />
-    <Content Include="Views\EnrollCourses\Details.cshtml" />
-    <Content Include="Views\EnrollCourses\Edit.cshtml" />
-    <Content Include="Views\EnrollCourses\Index.cshtml" />
+    <Content Include="Views\EnrollCourses\Enroll.cshtml" />
     <Content Include="Views\RoomAllocation\UnallocatedClassRoom.cshtml" />
+    <Content Include="Views\EnrollCourses\SaveResult.cshtml" />
+    <Content Include="Views\EnrollCourses\ViewResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,6 +247,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912201138424_PreparedAllModelClasses.resx">
       <DependentUpon>201912201138424_PreparedAllModelClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912201529128_Update-EnrollCourseModel.resx">
+      <DependentUpon>201912201529128_Update-EnrollCourseModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

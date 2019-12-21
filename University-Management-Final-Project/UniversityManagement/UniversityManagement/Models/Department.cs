@@ -16,6 +16,7 @@ namespace UniversityManagement.Models
         [Display(Name = "Code")]
         [StringLength(7, MinimumLength = 2, ErrorMessage = "Departmrnt Code Must be 2 to 7 characters long")]
         [Remote("IsDeptCodeExist", "Department", ErrorMessage = "Code already exists!")]
+        [RegularExpression(@"^[a-zA-Z0-9 @'!&(){}:;,\[\].+?/-]+", ErrorMessage = "Code is not valid")]
         public string Code { get; set; }
 
 
@@ -24,6 +25,7 @@ namespace UniversityManagement.Models
         [Column(TypeName = "varchar")]
         [StringLength(50)]
         [Remote("IsDeptNameExist", "Department", ErrorMessage = "Name already exists!")]
+        [RegularExpression(@"^[a-zA-Z0-9 @'!&(){}:;,\[\].+?/-]+", ErrorMessage = "Name is not valid")]
         public string Name { get; set; }
     }
 }

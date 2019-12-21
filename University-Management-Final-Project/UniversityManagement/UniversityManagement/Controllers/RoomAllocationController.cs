@@ -16,7 +16,7 @@ namespace UniversityManagement.Controllers
         public ActionResult Allocate()
         {
             ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
-            ViewBag.Courses = new SelectList(db.Courses, "CourseId", "CourseName");
+            ViewBag.Courses = new SelectList(db.Courses, "CourseId", "Name");
             ViewBag.Days = new SelectList(db.Days, "DayId", "Name");
             ViewBag.Rooms = new SelectList(db.Rooms, "RoomId", "Name");
             return View();
@@ -33,11 +33,13 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Allocate");
             }
 
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode", roomAllocation.CourseId);
-            ViewBag.DayId = new SelectList(db.Days, "DayId", "Name", roomAllocation.DayId);
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", roomAllocation.Course.DepartmentId);
-            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "Name", roomAllocation.RoomId);
-            return View(roomAllocation);
+            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name", roomAllocation.CourseId);
+            //ViewBag.DayId = new SelectList(db.Days, "DayId", "Name", roomAllocation.DayId);
+            //ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", roomAllocation.Course.DepartmentId);
+            //ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "Name", roomAllocation.RoomId);
+
+            //return View(roomAllocation);
+            return RedirectToAction("Allocate");
         }
 
         public JsonResult GetCoursesByDeptId(int deptId)

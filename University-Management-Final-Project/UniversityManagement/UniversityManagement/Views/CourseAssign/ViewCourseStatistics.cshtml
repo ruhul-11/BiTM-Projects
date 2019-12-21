@@ -16,10 +16,22 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("Departments", null, "--select--", htmlAttributes: new { @class = "form-control" })
+                    <select id="Departments" class="form-control">
+                        <option value="">Select Department</option>
+                        @foreach (var aDepartment in ViewBag.Departments)
+                        {
+                            <option value="@aDepartment.DepartmentId">@aDepartment.Name</option>
+                        }
+                    </select><label id="DeptErrorLabel" style="color: red;"></label>
+                </div>
+                
+                
+                
+                @*<div class="col-md-10">
+                    @Html.DropDownList("Departments", null, " --Select Department-- ", htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
                 </div>
-                <label id="DeptErrorLabel" style="color: red;"></label>
+                <label id="DeptErrorLabel" style="color: red;"></label>*@
             </div>
         </div>
         <br />
@@ -58,7 +70,7 @@
                 var departmentId = $("#Departments").val();
 
                 $("#messageLabel").text("");
-                var parameter = { deptId: departmentId };
+                var parameter = { deptId : departmentId };
 
                 $.ajax({
 
@@ -71,10 +83,10 @@
 
                         var table = $('<table id="statisticsTable" border="1" class="table" >');
 
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Code</th>');
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Title</th>');
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Semester</th>');
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Assigned To</th></table>');
+                        table.append('<th>Code</th>');
+                        table.append('<th>Title</th>');
+                        table.append('<th>Semester</th>');
+                        table.append('<th>Assigned To</th></table>');
                         table.css('background-color', '#22D7A0');
 
                         var tableRow = false;
@@ -84,14 +96,14 @@
                         $.each(data, function (key, value) {
 
                             var trow = $('<tr>');
-                            var assignedTo = value.CourseAssignTo;
+                            var assignedTo = value.AssignTo;
 
                             if (assignedTo == null || assignedTo == "")
                                 assignedTo = 'Not Assigned Yet';
 
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.CourseCode + '</td>');
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.CourseName + '</td>');
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Semester.SemesterName + '</td>');
+                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Code + '</td>');
+                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Name + '</td>');
+                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Semester.Name + '</td>');
                             trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + assignedTo + '</td></tr>');
 
                             table.append(trow);

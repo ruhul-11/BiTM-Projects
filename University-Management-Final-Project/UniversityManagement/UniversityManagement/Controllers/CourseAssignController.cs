@@ -21,7 +21,7 @@ namespace UniversityManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save([Bind(Include = "CourseAssignId,DepartmentId,TeacherId,CreditTaken,CreditLeft,CourseID,Name,Credit")] CourseAssign courseassign)
+        public ActionResult Save(CourseAssign courseassign)
         {
             if (ModelState.IsValid)
             {
@@ -32,7 +32,9 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Save");
             }
 
+            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
             return RedirectToAction("Save");
+            /*return View(courseassign);*/  //Need to Check
         }
 
         public JsonResult GetTeacherByDeptId(int deptId)
@@ -62,7 +64,8 @@ namespace UniversityManagement.Controllers
         //Course Statistics
         public ActionResult ViewCourseStatistics()
         {
-            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
+            ViewBag.Departments = db.Departments.ToList();
+            //ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
             return View();
         }
 

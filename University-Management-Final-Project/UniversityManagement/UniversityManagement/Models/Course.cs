@@ -18,12 +18,14 @@ namespace UniversityManagement.Models
         [Column(TypeName = "varchar")]
         [StringLength(100, MinimumLength = 5, ErrorMessage = "Course Code Must be 5 characters long")]
         [Remote("IsCodeUnique", "Course", ErrorMessage = "Code already exists!")]
+        [RegularExpression(@"^[a-zA-Z0-9 @'!&(){}:;,\[\].+?/-]+", ErrorMessage = "Code is not valid")]
         public string Code { get; set; }
 
         [Required(ErrorMessage = "Course Name is Reqired")]
         [Display(Name = "Course Name")]
         [Column(TypeName = "varchar")]
         [Remote("IsNameUnique", "Course", ErrorMessage = "Name already exists!")]
+        [RegularExpression(@"^[a-zA-Z0-9 @'!&(){}:;,\[\].+?/-]+", ErrorMessage = "Name is not valid")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "This field is Required")]

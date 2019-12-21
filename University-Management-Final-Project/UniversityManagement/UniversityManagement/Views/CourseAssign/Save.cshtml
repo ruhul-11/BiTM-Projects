@@ -16,15 +16,17 @@
 
         @Html.RenderFlashMessages()
 
-        <fieldset>
-            <legend>Course Assign to Teacher</legend>
+        <fieldset class="box-75">
+            @*<legend>Course Assign to Teacher</legend>*@
+            <h2 class="text-center">Course Assign to Teacher</h2>
+            <hr />
 
             @*Department Dropdown*@
-            <div class="col-md-8 col-md-offset-3">
+            <div class="col-12">
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("Departments", null, "--select--", htmlAttributes: new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("Departments", null, " -- Select Department -- ", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Course.Department.DepartmentId, "", new { @class = "text-danger" })
                     </div>
                     <label id="DeptErrorLabel" style="color: red;"></label>
@@ -32,10 +34,10 @@
 
                 @*Teacher Dropdown*@
                 <div class="form-group">
-                    @Html.LabelFor(model => model.TeacherId, "Teacher", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(model => model.TeacherId, "Teacher", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         <select class="form-control" id="Teachers">
-                            <option value="">--select student--</option>
+                            <option value=""> -- Select Teacher -- </option>
                         </select>
                     </div>
                     <label id="TeacherErrorLabel" style="color: red;"></label>
@@ -43,8 +45,8 @@
 
                 @*Teacher's Credit*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Teacher.CreditTaken, "Credit to be taken", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(m => m.Teacher.CreditTaken, "Credit to be taken", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Teacher.CreditTaken, new { @class = "form-control", @readonly = "readonly" })
                         @Html.ValidationMessageFor(m => m.Teacher.CreditTaken, "", new { @class = "text-danger" })
                     </div>
@@ -52,8 +54,8 @@
 
                 @*Teacher's Remaining Credit*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Teacher.CreditLeft, "Remaining Credit", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(m => m.Teacher.CreditLeft, "Remaining Credit", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Teacher.CreditLeft, new { @class = "form-control", @readonly = "readonly" })
                         @Html.ValidationMessageFor(m => m.Teacher.CreditLeft, "", new { @class = "text-danger" })
                     </div>
@@ -62,10 +64,10 @@
 
                 @*Course Dropdown List*@
                 <div class="form-group">
-                    @Html.Label("Course", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.Label("Course", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         <select class="form-control" id="CourseId">
-                            <option value="">--select course--</option>
+                            <option value=""> -- Select Course -- </option>
                         </select>
                     </div>
                     <label id="CourseErrorLabel" style="color: red;"></label>
@@ -73,26 +75,26 @@
 
                 @*Course Name*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Course.Name, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(m => m.Course.Name, "Name", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Course.Name, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Course.Name, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(m => m.Course.Name, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
                 @*Course Credit*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Course.Credit, "Credit", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(m => m.Course.Credit, "Credit", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Course.Credit, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Course.Credit, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(m => m.Course.Credit, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Assign" class="btn btn-default" />
+                    <div class="col-md-8 col-md-offset-4">
+                        <input type="submit" value="Assign" class="btn btn-block btn-success" />
                     </div>
                 </div>
 
@@ -122,7 +124,7 @@
                 $("#Teachers").empty();
                 var departmentId = $("#Departments").val();
                 var parameter = { deptId: departmentId };
-                $("#Teachers").append('<option value=0>--Select Teacher--</option>');
+                $("#Teachers").append('<option value=0>-- Select Teacher --</option>');
                 $.ajax({
 
                     type: "POST",
@@ -144,7 +146,7 @@
                 $("#CourseId").empty();
                 var departmentId = $("#Departments").val();
                 var parameter = { deptId: departmentId };
-                $("#CourseId").append('<option value=0>--Select Course--</option>');
+                $("#CourseId").append('<option value=0>-- Select Course --</option>');
                 $.ajax({
 
                     type: "POST",
@@ -165,8 +167,8 @@
             });
 
             $("#Teachers").change(function () {
-                var id = $("#Teachers").val();
-                var parameter = { TeacherId: id };
+                var teacherId = $("#Teachers").val();
+                var parameter = { TeacherId: teacherId };
 
 
                 $.ajax({
@@ -175,14 +177,14 @@
                     contentType: "application/json;charset=utf-8",
                     data: JSON.stringify(parameter),
                     success: function (data) {
-                        $("#CreditTaken").val(data.CreditTaken);
-                        $("#CreditLeft").val(data.CreditLeft);
+                        $("#Teacher_CreditTaken").val(data.CreditTaken);
+                        $("#Teacher_CreditLeft").val(data.CreditLeft);
                     }
                 });
 
-                if (id == 0) {
-                    $("#CreditTaken").val("");
-                    $("#CreditLeft").val("");
+                if (teacherId == 0) {
+                    $("#Teacher_CreditTaken").val("");
+                    $("#Teacher_CreditLeft").val("");
                 }
                 return false;
 
@@ -217,20 +219,20 @@
                 var departmentId = $("#Departments").val();
 
                 if (departmentId == 0) {
-                    $("#DeptErrorLabel").text(" --Select Department--");
+                    $("#DeptErrorLabel").text(" -- Select Department --");
                     errorValue = 1;
                 }
 
                 var teacherId = $("#Teachers").val();
 
                 if (teacherId == 0) {
-                    $("#TeacherErrorLabel").text(" -- Select Teacher-- ");
+                    $("#TeacherErrorLabel").text(" -- Select Teacher -- ");
                     errorValue = 1;
                 }
 
                 var courseId = $("#CourseId").val();
                 if (courseId == 0) {
-                    $("#CourseErrorLabel").text(" --Select Course-- ");
+                    $("#CourseErrorLabel").text(" -- Select Course -- ");
                     errorValue = 1;
                 }
                 if (errorValue == 1) {
@@ -239,17 +241,17 @@
                 else {
                    // alert("Course Credit: " + $("#courseCredit").val());
 
-                    var creditAvailable = 6;
+                    var creditAvailable = $("#Teacher_CreditLeft").val() - $("#Course_Credit").val();
                     var status = false;
                     if (creditAvailable < 0) {
 
-                        status = confirm("This will cross total assigned credit for this teacher. Do You Proced...");
+                        status = confirm("This will cross total assigned credit for this teacher. Do You Proced ?");
                     }
                     if (status == true || creditAvailable > 0) {
 
-                        var totalTakenCredit = $("#creditTaken").val();
+                        var totalTakenCredit = $("#Teacher_CreditTaken").val();
 
-                        var jasonData = { DepartmentId: departmentId, TeacherId: teacherId, CourseId: courseId, CreditTaken: totalTakenCredit, CreditLeft: creditAvailable };
+                        var jasonData = { Departments: departmentId, Teachers: teacherId, CourseId: courseId, Teacher_CreditTaken: totalTakenCredit, Teacher_CreditLeft: creditAvailable };
                         $.ajax({
                             type: "POST",
                             url: '@Url.Action("SaveCourseAssign", "CourseAssign")',
@@ -261,10 +263,8 @@
                                 if (data == true)
 
                                     $("#AssignSuccessLabel").text("Successfully Assigned");
-                                    //alert("Successfully Assigned");
                                 else {
                                     $("#AssignErrorLabel").text("This course is already Assigned");
-                                    //alert("This course is already Assigned");
                                 }
                                 //ResetValue();
                             },

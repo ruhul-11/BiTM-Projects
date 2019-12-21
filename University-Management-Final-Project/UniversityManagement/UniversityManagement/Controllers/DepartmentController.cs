@@ -10,6 +10,7 @@ namespace UniversityManagement.Controllers
     public class DepartmentController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
+        Department aDepartment = new Department();
 
         public ActionResult SaveDepartment()
         {
@@ -19,7 +20,7 @@ namespace UniversityManagement.Controllers
         [HttpPost]
         public ActionResult SaveDepartment(Department department)
         {
-
+            
 
             if (ModelState.IsValid)
             {
@@ -41,8 +42,9 @@ namespace UniversityManagement.Controllers
 
         public JsonResult IsDeptCodeExist(string Code)
         {
+            aDepartment.Code = Code.Trim();
             var dept = db.Departments.ToList();
-            if (!dept.Any(department => department.Code.ToLower() == Code.ToLower()))
+            if (!dept.Any(department => department.Code.ToLower() == aDepartment.Code.ToLower()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -52,8 +54,9 @@ namespace UniversityManagement.Controllers
 
         public JsonResult IsDeptNameExist(string Name)
         {
+            aDepartment.Name = Name.Trim();
             var dept = db.Departments.ToList();
-            if (!dept.Any(department => department.Name.ToLower() == Name.ToLower()))
+            if (!dept.Any(department => department.Name.ToLower() == aDepartment.Name.ToLower()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

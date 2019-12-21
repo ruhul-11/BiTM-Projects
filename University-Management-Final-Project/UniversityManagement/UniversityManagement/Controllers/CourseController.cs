@@ -16,17 +16,18 @@ namespace UniversityManagement.Controllers
     public class CourseController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
+        Course aCourse = new Course();
 
-        public ActionResult SaveCourse()
+        public ActionResult Save()
         {
             ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code");
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name");
             return View();
         }
 
-        
+        //[Bind(Include = "CourseId,Code,Name,Credit,Description,AssignTo,Status,DepartmentId,SemesterId")]
         [HttpPost]
-        public ActionResult SaveCourse([Bind(Include = "CourseId,CourseCode,CourseName,CourseCredit,CourseDescription,CourseAssignTo,CourseStatus,DepartmentId,SemesterId")] Course course)
+        public ActionResult Save([Bind(Include = "CourseId,Code,Name,Credit,Description,AssignTo,Status,DepartmentId,SemesterId")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -41,15 +42,25 @@ namespace UniversityManagement.Controllers
             return View(course);
         }
 
-
+        
         public JsonResult IsCodeUnique(string Code)
         {
-            return Json(!db.Courses.Any(m => m.Code == Code), JsonRequestBehavior.AllowGet);
+            //Code.Trim();
+            if(!db.Courses.ToList().Any(m => m.Code.ToLower() == Code.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult IsNameUnique(string Name)
         {
-            return Json(!db.Courses.Any(course => course.Name == Name), JsonRequestBehavior.AllowGet);
+            //Name.Trim();
+            if (!db.Courses.ToList().Any(m => m.Name.ToLower() == Name.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult UnassignCourses()

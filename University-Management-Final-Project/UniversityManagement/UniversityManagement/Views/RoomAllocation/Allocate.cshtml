@@ -34,7 +34,7 @@
                     @Html.LabelFor(model => model.CourseId, "Course", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <select class="form-control" id="Courses">
-                            <option value="">--select Course--</option>
+                            <option value="0">-- Select Course --</option>
                         </select>
                     </div>
                     <label id="courseErrorMessage" style="color: red;"></label>
@@ -114,12 +114,12 @@
                 $("#roomAllocateNotPossibleMessage").text("");
                 $("#roomAllocateSuccessMessage").text("");
                 $("#roomAllocateErrorMessage").text("");
-                $("#Courses").append('<option value=' + 0 + '>' + "--Select Course--" + '</option>');
+                $("#Courses").append('<option value=' + 0 + '>' + "-- Select Course --" + '</option>');
 
                 var departmentId = $("#Departments").val();
                 var parameter = { deptId: departmentId };
                 $("#Courses").empty();
-                $("#Courses").append('<option value=0></option>');
+                $("#Courses").append('<option value=0> -- Select Course -- </option>');
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("GetCoursesByDeptId", "RoomAllocation")',
@@ -130,7 +130,7 @@
                         // alert("Success");
                         $.each(data, function(key, value) {
                             // alert(value.Id + " " + value.CourseCode);
-                            $("#Courses").append('<option value=' + value.Id + '>' + value.CourseName + '</option>');
+                            $("#Courses").append('<option value=' + value.Id + '>' + value.Name + '</option>');
                         });
                     }
                 });

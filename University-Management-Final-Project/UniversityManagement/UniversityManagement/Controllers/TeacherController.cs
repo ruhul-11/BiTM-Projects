@@ -11,6 +11,7 @@ namespace UniversityManagement.Controllers
     public class TeacherController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
+        Teacher aTeacher = new Teacher();
 
         public ActionResult Save()
         {
@@ -20,11 +21,11 @@ namespace UniversityManagement.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Save([Bind(Include = "TeacherId,Name,Address,Email,ContactNo,DesignationId,DepartmentId,CreditTaken,CreditLeft")] Teacher teacher)
+        public ActionResult Save(Teacher teacher)
         {
             if (ModelState.IsValid)
             {
+                teacher.CreditLeft = teacher.CreditTaken;
                 db.Teachers.Add(teacher);
                 db.SaveChanges();
                 FlashMessage.Confirmation("Teacher's Information saved successfully");
@@ -38,7 +39,12 @@ namespace UniversityManagement.Controllers
 
         public JsonResult IsEmailExists(string Email)
         {
-            return Json(!db.Teachers.Any(m => m.Email == Email), JsonRequestBehavior.AllowGet);
+            aTeacher.Email = Email.Trim();
+            if(!db.Teachers.ToList().Any(m=>m.Email.ToLower() == aTeacher.Email.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }
