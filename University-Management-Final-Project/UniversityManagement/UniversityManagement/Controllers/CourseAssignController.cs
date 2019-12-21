@@ -13,6 +13,7 @@ namespace UniversityManagement.Controllers
     public class CourseAssignController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
+        CourseAssign aCourseAssign = new CourseAssign();
 
         public ActionResult Save()
         {
@@ -76,10 +77,10 @@ namespace UniversityManagement.Controllers
         }
 
 
-        public JsonResult SaveCourseAssign(CourseAssign courseAssign)
+        public JsonResult SaveCourseAssign(int teacherId, int courseId, double creditTaken, double creditLeft)
         {
             var checkAssignedCourses =
-                db.CourseAssigns.Where(m => m.CourseId == courseAssign.CourseId && m.Course.Status == true)
+                db.CourseAssigns.Where(m => m.CourseId == courseId && m.Course.Status == true)
                     .ToList();
 
             if (checkAssignedCourses.Count > 0)
@@ -87,18 +88,21 @@ namespace UniversityManagement.Controllers
 
             else
             {
-                db.CourseAssigns.Add(courseAssign);
+                aCourseAssign.TeacherId = teacherId;
+                aCourseAssign.CourseId = courseId;
+                db.CourseAssigns.Add(aCourseAssign);
                 db.SaveChanges();
 
-                var teacher = db.Teachers.FirstOrDefault(m => m.TeacherId == courseAssign.TeacherId);
+
+                var teacher = db.Teachers.FirstOrDefault(m => m.TeacherId == teacherId);
 
                 if (teacher != null)
                 {
-                    teacher.CreditLeft = courseAssign.Teacher.CreditLeft;  //Need to check (courseAssign.Teacher.CreditLeft)
+                    teacher.CreditLeft = creditLeft;  //Need to check (courseAssign.Teacher.CreditLeft)
                     db.Teachers.AddOrUpdate(teacher);
                     db.SaveChanges();
 
-                    var course = db.Courses.FirstOrDefault(m => m.CourseId == courseAssign.CourseId);
+                    var course = db.Courses.FirstOrDefault(m => m.CourseId == courseId);
 
                     if (course != null)
                     {

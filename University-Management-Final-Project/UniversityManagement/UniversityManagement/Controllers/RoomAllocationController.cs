@@ -33,10 +33,10 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Allocate");
             }
 
-            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name", roomAllocation.CourseId);
-            //ViewBag.DayId = new SelectList(db.Days, "DayId", "Name", roomAllocation.DayId);
-            //ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", roomAllocation.Course.DepartmentId);
-            //ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "Name", roomAllocation.RoomId);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name", roomAllocation.CourseId);
+            ViewBag.DayId = new SelectList(db.Days, "DayId", "Name", roomAllocation.DayId);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", roomAllocation.Course.DepartmentId);
+            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "Name", roomAllocation.RoomId);
 
             //return View(roomAllocation);
             return RedirectToAction("Allocate");

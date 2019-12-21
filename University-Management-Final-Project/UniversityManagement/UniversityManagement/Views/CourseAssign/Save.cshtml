@@ -2,7 +2,7 @@
 @model UniversityManagement.Models.CourseAssign
 
 @{
-    ViewBag.Title = "SaveCourseAssign";
+    ViewBag.Title = "Save";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -94,7 +94,7 @@
 
                 <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
-                        <input type="submit" value="Assign" class="btn btn-block btn-success" />
+                        <input type="submit" value="Assign" id="assignButton" class="btn btn-block btn-success" />
                     </div>
                 </div>
 
@@ -213,7 +213,7 @@
 
             
 
-            $("#saveButton").click(function() {
+            $("#assignButton").click(function() {
                 var errorValue = 0;
                 //ResetLabel();
                 var departmentId = $("#Departments").val();
@@ -239,7 +239,7 @@
                     return false;
                 }
                 else {
-                   // alert("Course Credit: " + $("#courseCredit").val());
+                   
 
                     var creditAvailable = $("#Teacher_CreditLeft").val() - $("#Course_Credit").val();
                     var status = false;
@@ -251,7 +251,7 @@
 
                         var totalTakenCredit = $("#Teacher_CreditTaken").val();
 
-                        var jasonData = { Departments: departmentId, Teachers: teacherId, CourseId: courseId, Teacher_CreditTaken: totalTakenCredit, Teacher_CreditLeft: creditAvailable };
+                        var jasonData = { teacherId: teacherId, courseId: courseId, creditTaken: totalTakenCredit, creditLeft: creditAvailable };
                         $.ajax({
                             type: "POST",
                             url: '@Url.Action("SaveCourseAssign", "CourseAssign")',

@@ -24,14 +24,14 @@
                         }
                     </select><label id="DeptErrorLabel" style="color: red;"></label>
                 </div>
-                
-                
-                
+
+
+
                 @*<div class="col-md-10">
-                    @Html.DropDownList("Departments", null, " --Select Department-- ", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
-                </div>
-                <label id="DeptErrorLabel" style="color: red;"></label>*@
+                        @Html.DropDownList("Departments", null, " --Select Department-- ", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
+                    </div>
+                    <label id="DeptErrorLabel" style="color: red;"></label>*@
             </div>
         </div>
         <br />
@@ -41,20 +41,20 @@
         <label id="messageLabel" style="color: #00B16A; font-weight: normal; font-size: 20px;"></label>
 
         @*<table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Title</th>
-                    <th>Semester</th>
-                    <th>Assign To</th>
-                </tr>
-            </thead>
-            <tbody id="htmlTableDiv"></tbody>
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Semester</th>
+                        <th>Assign To</th>
+                    </tr>
+                </thead>
+                <tbody id="htmlTableDiv"></tbody>
 
-        </table>*@
+            </table>*@
 
         <div id="htmlTableDiv">
-            </div>
+        </div>
     }
 </fieldset>
 
@@ -83,10 +83,10 @@
 
                         var table = $('<table id="statisticsTable" border="1" class="table" >');
 
-                        table.append('<th>Code</th>');
-                        table.append('<th>Title</th>');
-                        table.append('<th>Semester</th>');
-                        table.append('<th>Assigned To</th></table>');
+                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Code</th>');
+                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Title</th>');
+                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Semester</th>');
+                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Assigned To</th></table>');
                         table.css('background-color', '#22D7A0');
 
                         var tableRow = false;

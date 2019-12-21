@@ -45,8 +45,8 @@ namespace UniversityManagement.Controllers
         
         public JsonResult IsCodeUnique(string Code)
         {
-            //Code.Trim();
-            if(!db.Courses.ToList().Any(m => m.Code.ToLower() == Code.ToLower()))
+            Code.Trim();
+            if (!db.Courses.ToList().Any(m => m.Code.ToLower() == Code.ToLower()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -55,7 +55,7 @@ namespace UniversityManagement.Controllers
 
         public JsonResult IsNameUnique(string Name)
         {
-            //Name.Trim();
+            Name.Trim();
             if (!db.Courses.ToList().Any(m => m.Name.ToLower() == Name.ToLower()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);

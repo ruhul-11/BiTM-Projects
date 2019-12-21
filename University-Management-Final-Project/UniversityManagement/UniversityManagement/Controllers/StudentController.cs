@@ -17,13 +17,15 @@ namespace UniversityManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register([Bind(Include = "StudentId,Name,RegNo,Email,ContactNo,Date,Address,DepartmentId")] Student student)
+        public ActionResult Register(Student student)
         {
             if (ModelState.IsValid)
             {
+                student.RegNo = GetStudentRegNo(student);
+
                 db.Students.Add(student);
                 db.SaveChanges();
-                FlashMessage.Confirmation("Department saved successfully");
+                FlashMessage.Confirmation("Registration Successfull. Your Registration number is: " + student.RegNo);
                 return RedirectToAction("Register");
             }
 
@@ -53,8 +55,12 @@ namespace UniversityManagement.Controllers
 
         public JsonResult IsEmailExists(string Email)
         {
-            return Json(!db.Students.Any(m => m.Email == Email), JsonRequestBehavior.AllowGet);
+            Email.Trim();
+            if(!db.Students.ToList().Any(m => m.Email.ToLower() == Email.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
-
     }
 }

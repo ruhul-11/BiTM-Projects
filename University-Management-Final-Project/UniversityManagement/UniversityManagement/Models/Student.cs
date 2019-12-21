@@ -21,7 +21,7 @@ namespace UniversityManagement.Models
 
         [Required(ErrorMessage = "Email is Required")]
         [EmailAddress(ErrorMessage = "Invalid Email")]
-        [Remote("IsEmailExist", "Student", ErrorMessage = "Email already exists!")]
+        [Remote("IsEmailExists", "Student", ErrorMessage = "Email already exists!")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Invalid Email")]
         public string Email { set; get; }
 
