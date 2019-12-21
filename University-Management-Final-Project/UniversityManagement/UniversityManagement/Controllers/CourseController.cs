@@ -20,14 +20,14 @@ namespace UniversityManagement.Controllers
 
         public ActionResult Save()
         {
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code");
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Name");
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name");
             return View();
         }
 
-        //[Bind(Include = "CourseId,Code,Name,Credit,Description,AssignTo,Status,DepartmentId,SemesterId")]
+        
         [HttpPost]
-        public ActionResult Save([Bind(Include = "CourseId,Code,Name,Credit,Description,AssignTo,Status,DepartmentId,SemesterId")] Course course)
+        public ActionResult Save(Course course)
         {
             if (ModelState.IsValid)
             {
@@ -37,7 +37,7 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Save");
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", course.DepartmentId);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Name", course.DepartmentId);
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name", course.SemesterId);
             return View(course);
         }

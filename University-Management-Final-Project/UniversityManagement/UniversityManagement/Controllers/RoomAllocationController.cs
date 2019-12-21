@@ -23,7 +23,7 @@ namespace UniversityManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Allocate([Bind(Include = "RoomAllocationId,DepartmentId,CourseId,RoomId,DayId,StartTime,EndTime,RoomStatus")] RoomAllocation roomAllocation)
+        public ActionResult Allocate(RoomAllocation roomAllocation)
         {
             if (ModelState.IsValid)
             {
