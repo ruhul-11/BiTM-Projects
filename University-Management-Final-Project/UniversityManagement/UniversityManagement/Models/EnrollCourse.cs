@@ -24,7 +24,7 @@ namespace UniversityManagement.Models
         [ForeignKey("CourseId")]
         public virtual Course Course { get; set; }
 
-        [Required(ErrorMessage ="Please Select a Date")]
+        //[Required(ErrorMessage ="Please Select a Date")]
         public DateTime EnrollDate { get; set; }
 
         public string CourseGrade { get; set; }

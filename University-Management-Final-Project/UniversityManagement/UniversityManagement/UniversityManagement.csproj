@@ -165,6 +165,14 @@
     <Compile Include="Migrations\201912220601435_Modify-Student-Model.designer.cs">
       <DependentUpon>201912220601435_Modify-Student-Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912221025249_Modify-EnrollCourse-Model.cs" />
+    <Compile Include="Migrations\201912221025249_Modify-EnrollCourse-Model.designer.cs">
+      <DependentUpon>201912221025249_Modify-EnrollCourse-Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912221214391_Modify-RegNo.cs" />
+    <Compile Include="Migrations\201912221214391_Modify-RegNo.designer.cs">
+      <DependentUpon>201912221214391_Modify-RegNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
     <Compile Include="Models\Course.cs" />
@@ -241,7 +249,7 @@
     <Content Include="Views\RoomAllocation\Allocate.cshtml" />
     <Content Include="Views\Course\UnassignCourses.cshtml" />
     <Content Include="Views\EnrollCourses\Enroll.cshtml" />
-    <Content Include="Views\RoomAllocation\UnallocatedClassRoom.cshtml" />
+    <Content Include="Views\RoomAllocation\UnAllocatedClassRoom.cshtml" />
     <Content Include="Views\EnrollCourses\SaveResult.cshtml" />
     <Content Include="Views\EnrollCourses\ViewResult.cshtml" />
   </ItemGroup>
@@ -270,6 +278,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912220601435_Modify-Student-Model.resx">
       <DependentUpon>201912220601435_Modify-Student-Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912221025249_Modify-EnrollCourse-Model.resx">
+      <DependentUpon>201912221025249_Modify-EnrollCourse-Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912221214391_Modify-RegNo.resx">
+      <DependentUpon>201912221214391_Modify-RegNo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

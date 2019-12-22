@@ -37,9 +37,9 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Save");
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Name", course.DepartmentId);
-            ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name", course.SemesterId);
-            return View(course);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Name");
+            ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "Name");
+            return RedirectToAction("Save");
         }
 
         

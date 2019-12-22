@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using UniversityManagement.DataContext;
 using UniversityManagement.Models;
+using Vereyon.Web;
 
 namespace UniversityManagement.Controllers
 {
@@ -16,6 +17,8 @@ namespace UniversityManagement.Controllers
     {
         private UniversityDbContext db = new UniversityDbContext();
         EnrollCourse enrollCourse = new EnrollCourse();
+        EnrollCourse bEnrollCourse = new EnrollCourse();
+        Grade aGrade = new Grade();
 
 
         public ActionResult Enroll()
@@ -32,12 +35,10 @@ namespace UniversityManagement.Controllers
             {
                 db.EnrollCourses.Add(enrollCourse);
                 db.SaveChanges();
+                FlashMessage.Confirmation("Course enrolled to Student Successfull.");
                 return RedirectToAction("Enroll");
             }
-
-            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code", enrollCourse.CourseId);
-            ViewBag.Registrations = new SelectList(db.Students, "StudentId", "RegNo", enrollCourse.StudentId);
-            //return View(enrollCourse);
+            FlashMessage.Danger("Course enrolled failed");
             return RedirectToAction("Enroll");
         }
 
@@ -70,7 +71,7 @@ namespace UniversityManagement.Controllers
         public JsonResult EnrollStudentToCourse(int studentId, int CourseId, DateTime EnrollDate)
         {
 
-            var enrollCourseList = db.EnrollCourses.Where(m => m.StudentId == enrollCourse.StudentId && m.CourseId == enrollCourse.CourseId).ToList();
+            var enrollCourseList = db.EnrollCourses.Where(m => m.StudentId == studentId && m.CourseId == CourseId).ToList();
 
             
 
@@ -78,17 +79,12 @@ namespace UniversityManagement.Controllers
             {
                 var id = enrollCourseList[0].EnrollCourseId;
                 var date = enrollCourseList[0].EnrollDate;
+                enrollCourse.StudentId = studentId;
+                enrollCourse.CourseId = CourseId;
                 enrollCourse.EnrollCourseId = id;
                 enrollCourse.EnrollDate = date;
                 db.EnrollCourses.AddOrUpdate(enrollCourse);
 
-                //var id = enrollCourseList[0].EnrollCourseId;
-                //var date = enrollCourseList[0].EnrollDate;
-                //enrollCourse.EnrollCourseId = id;
-                //enrollCourse.StudentId = studentId;
-                //enrollCourse.EnrollDate = date;
-                //enrollCourse.CourseId = CourseId;
-                //db.EnrollCourses.AddOrUpdate(enrollCourse);
             }
             else
             {
@@ -107,27 +103,44 @@ namespace UniversityManagement.Controllers
 
         public ActionResult SaveResult()
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code");
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Name");
+            ViewBag.Registrations = new SelectList(db.Students, "StudentId", "RegNo");
             ViewBag.GradeList = new SelectList(db.Grades, "GradeId", "Name");
-
-            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode");
-            //ViewBag.StudentList = db.Students.ToList();
-            //ViewBag.GradeList = db.Grades.ToList();
 
             return View();
         }
 
-        public JsonResult GetCoursesbyRegNo(string regNo)
+        public JsonResult SaveStudentResult(int studentId, int courseId, string courseGradeId)
         {
-            var courses = db.EnrollCourses.Where(m => m.Student.RegNo == regNo).ToList();
+
+            var grades = db.EnrollCourses.Where(m => m.StudentId == studentId && m.CourseId == courseId).ToList();
+
+                if (grades.Count() == 1)
+                {
+                    var id = grades[0].EnrollCourseId;
+
+                    bEnrollCourse = db.EnrollCourses.FirstOrDefault(m => m.EnrollCourseId == id);
+
+                    int gradeId = Convert.ToInt32(courseGradeId);
+                    aGrade = db.Grades.Find(gradeId);
+
+                    bEnrollCourse.CourseGrade = aGrade.Name;
+                    db.EnrollCourses.AddOrUpdate(bEnrollCourse);
+                }
+                db.SaveChanges();
+                return Json(true);
+        }
+
+        public JsonResult GetCoursesByStudentId(int studentId)
+        {
+            var courses = db.EnrollCourses.Where(m => m.StudentId == studentId).ToList();
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
 
 
         public ActionResult ViewResult()
         {
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Name");
+            ViewBag.Registrations = new SelectList(db.Students, "StudentId", "RegNo");
+
             ViewBag.EnrollCourses = db.EnrollCourses.ToList();
             //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode");
             //ViewBag.StudentList = db.Students.ToList();
@@ -135,102 +148,5 @@ namespace UniversityManagement.Controllers
         }
 
 
-
-
-
-
-
-        //// GET: EnrollCourses
-        //public ActionResult Index()
-        //{
-        //    var enrollCourses = db.EnrollCourses.Include(e => e.Course).Include(e => e.Student);
-        //    return View(enrollCourses.ToList());
-        //}
-
-        //// GET: EnrollCourses/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EnrollCourse enrollCourse = db.EnrollCourses.Find(id);
-        //    if (enrollCourse == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(enrollCourse);
-        //}
-
-
-
-
-        //// GET: EnrollCourses/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EnrollCourse enrollCourse = db.EnrollCourses.Find(id);
-        //    if (enrollCourse == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code", enrollCourse.CourseId);
-        //    ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Name", enrollCourse.StudentId);
-        //    return View(enrollCourse);
-        //}
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "EnrollCourseId,StudentId,CourseId")] EnrollCourse enrollCourse)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(enrollCourse).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code", enrollCourse.CourseId);
-        //    ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Name", enrollCourse.StudentId);
-        //    return View(enrollCourse);
-        //}
-
-        //// GET: EnrollCourses/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    EnrollCourse enrollCourse = db.EnrollCourses.Find(id);
-        //    if (enrollCourse == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(enrollCourse);
-        //}
-
-        //// POST: EnrollCourses/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    EnrollCourse enrollCourse = db.EnrollCourses.Find(id);
-        //    db.EnrollCourses.Remove(enrollCourse);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
     }
 }

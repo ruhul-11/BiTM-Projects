@@ -15,7 +15,7 @@ namespace UniversityManagement.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please select a Registration Number")]
+        //[Required(ErrorMessage = "Please select a Registration Number")]
         [Column(TypeName = "varchar")]
         [StringLength(50)]
         public string RegNo { get; set; } 

@@ -215,24 +215,24 @@
 
             $("#assignButton").click(function() {
                 var errorValue = 0;
-                //ResetLabel();
+
                 var departmentId = $("#Departments").val();
 
                 if (departmentId == 0) {
-                    $("#DeptErrorLabel").text(" -- Select Department --");
+                    $("#DeptErrorLabel").text("Please Select Department");
                     errorValue = 1;
                 }
 
                 var teacherId = $("#Teachers").val();
 
                 if (teacherId == 0) {
-                    $("#TeacherErrorLabel").text(" -- Select Teacher -- ");
+                    $("#TeacherErrorLabel").text("Please Select Teacher");
                     errorValue = 1;
                 }
 
                 var courseId = $("#CourseId").val();
                 if (courseId == 0) {
-                    $("#CourseErrorLabel").text(" -- Select Course -- ");
+                    $("#CourseErrorLabel").text("Please Select Course");
                     errorValue = 1;
                 }
                 if (errorValue == 1) {
@@ -245,7 +245,7 @@
                     var status = false;
                     if (creditAvailable < 0) {
 
-                        status = confirm("This will cross total assigned credit for this teacher. Do You Proced ?");
+                        status = confirm("Do you take extra credit ?");
                     }
                     if (status == true || creditAvailable > 0) {
 
@@ -266,7 +266,6 @@
                                 else {
                                     $("#AssignErrorLabel").text("This course is already Assigned");
                                 }
-                                //ResetValue();
                             },
                         });
 

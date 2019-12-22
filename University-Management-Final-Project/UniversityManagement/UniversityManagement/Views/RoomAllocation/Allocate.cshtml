@@ -14,56 +14,62 @@
     <div class="form-horizontal">
 
         @Html.RenderFlashMessages()
-        <fieldset>
-            <legend>Allocate Class Rooms</legend>
-            <div class="col-md-8 col-md-offset-3">
+        <fieldset class="box-75">
+            @*<legend>Allocate Class Rooms</legend>*@
+            <h2 class="text-center">Allocate Class Rooms</h2>
+            <hr />
+            <div class="col-md-12">
                 
 
                 @*Department Dropdown*@
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("Departments", null, "--Select Department--", htmlAttributes: new { @class = "form-control" })
+                    @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("Departments", null, "-- Select Department --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
+                        <label id="deptErrorMessage" style="color: red;"></label>
                     </div>
-                    <label id="deptErrorMessage" style="color: red;"></label>
+                    
                 </div>
 
                 @*Course Dropdown*@
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CourseId, "Course", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    @Html.LabelFor(model => model.CourseId, "Course", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
                         <select class="form-control" id="Courses">
                             <option value="0">-- Select Course --</option>
                         </select>
+                        <label id="courseErrorMessage" style="color: red;"></label>
                     </div>
-                    <label id="courseErrorMessage" style="color: red;"></label>
+                    
                 </div>
 
                 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.RoomId, "Room No", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("Rooms", null, "--Select Room--", htmlAttributes: new { @class = "form-control" })
+                    @Html.LabelFor(model => model.RoomId, "Room No", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("Rooms", null, "-- Select Room --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
+                        <label id="roomErrorMessage" style="color: red;"></label>
                     </div>
-                    <label id="roomErrorMessage" style="color: red;"></label>
+                    
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DayId, "Day", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("Days", null, "--Select Day--", htmlAttributes: new { @class = "form-control" })
+                    @Html.LabelFor(model => model.DayId, "Day", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("Days", null, "-- Select Day --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.DayId, "", new { @class = "text-danger" })
+                        <label id="dayErrorMessage" style="color: red;"></label>
                     </div>
-                    <label id="dayErrorMessage" style="color: red;"></label>
+                    
                 </div>
 
 
                 <div class="form-group">
                     @*@Html.LabelFor(model => model.StartTime, "From", new { @class = "control-label col-md-2" })*@
-                    <label class="control-label col-md-2">From</label>
-                    <div class="col-md-4">
+                    <label class="control-label col-md-4">From</label>
+                    <div class="col-md-8">
 
                         <input type="time" id="startTime" name="startTime" class="form-control" />
                         <label id="startTimeErrorMessage" style="color: red;"></label>
@@ -71,8 +77,8 @@
                 </div>
                 <div class="form-group">
                     @*@Html.LabelFor(model => model.EndTime, "To", new { @class = "control-label col-md-2" })*@
-                    <label class="control-label col-md-2">To</label>
-                    <div class="col-md-10">
+                    <label class="control-label col-md-4">To</label>
+                    <div class="col-md-8">
 
                         <input type="time" id="endTime" name="endTime" class="form-control" />
                         <label id="endTimeErrorMessage" style="color: red;"></label>
@@ -81,13 +87,13 @@
 
 
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Allocate" class="btn btn-default" />
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" value="Allocate" id="allocateButton" class="btn btn-block btn-success" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-4 col-md-8">
                         <label id="roomAllocateSuccessMessage" style="color: green;"></label>
                         <label id="roomAllocateErrorMessage" style="color: red;"></label>
                         <label id="roomAllocateNotPossibleMessage" style="color: red;"></label>
@@ -127,40 +133,38 @@
                     data: JSON.stringify(parameter),
                     dataType: "json",
                     success: function(data) {
-                        // alert("Success");
                         $.each(data, function(key, value) {
-                            // alert(value.Id + " " + value.CourseCode);
                             $("#Courses").append('<option value=' + value.Id + '>' + value.Name + '</option>');
                         });
                     }
                 });
             });
 
-            $("#submit").click(function() {
+            $("#allocateButton").click(function() {
                 var errorValue = 0;
                 ResetErrorLabel();
-                var departmentId = $("#departmentId").val();
+                var departmentId = $("#Departments").val();
                 if (departmentId == 0) {
-                    $("#departmentErroMessage").text("Select One Department!");
+                    $("#departmentErroMessage").text("Please Select Department!");
                     errorValue = 1;
 
                 }
 
-                var courseId = $("#courseId").val();
+                var courseId = $("#Courses").val();
                 if (courseId == 0) {
-                    $("#courseErrorMessage").text("Select One Course!");
+                    $("#courseErrorMessage").text("Please Select Course!");
                     errorValue = 1;
                 }
 
-                var roomId = $("#roomId").val();
+                var roomId = $("#Rooms").val();
                 if (roomId == 0) {
                     $("#roomErrorMessage").text("Select One Room!");
                     errorValue = 1;
                 }
 
-                var dayId = $("#dayId").val();
+                var dayId = $("#Days").val();
                 if (dayId == 0) {
-                    $("#dayErrorMessage").text("Select One Day!");
+                    $("#dayErrorMessage").text("Select a Day!");
                     errorValue = 1;
                 }
 
