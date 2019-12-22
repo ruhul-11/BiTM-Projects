@@ -2,7 +2,7 @@
 @model UniversityManagement.Models.EnrollCourse
 
 @{
-    ViewBag.Title = "Enroll";
+    ViewBag.Title = "Enroll Course";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,8 +13,6 @@
 
 @using (Html.BeginForm())
 {
-    @*@Html.AntiForgeryToken()*@
-
     <div class="form-horizontal">
         @Html.RenderFlashMessages()
         <fieldset class="box-75">
@@ -22,9 +20,9 @@
             <h2 class="text-center">Enroll in a Course</h2>
             <hr />
             <div class="col-md-12">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
 
-                @*Student DropdownList*@
+                @*Student Registration DropdownList*@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Student.RegNo, "Student Reg. No", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
@@ -38,7 +36,6 @@
                     @Html.LabelFor(m => m.Student.Name, "Name", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Student.Name, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Student.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -47,7 +44,6 @@
                     @Html.LabelFor(m => m.Student.Email, "Email", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Student.Email, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Student.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -56,7 +52,6 @@
                     @Html.LabelFor(m => m.Student.Department.Name, "Department", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.TextBoxFor(m => m.Student.Department.Name, new { @class = "form-control", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.Student.Department.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -106,9 +101,10 @@
 
 
 @section Scripts {
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    @*<script src="~/Scripts/jquery-3.3.1.js"></script>*@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
     <script>
     $(document).ready(function() {
 
@@ -134,10 +130,10 @@
 
                         $("#CourseId").empty();
                          var parameter = { deptId: deptId };
-                         //alert(deptCode);
+                        $("#CourseId").append('<option value=0>-- Select Course --</option>');
                          $.ajax({
                              type: "POST",
-                             url: '@Url.Action("GetCoursesbyDeptId", "EnrollCourses")',
+                             url: '@Url.Action("GetCoursesByDeptId", "EnrollCourses")',
                              contentType: "application/json; charset=utf-8",
                              data: JSON.stringify(parameter),
                              dataType: "json",
@@ -159,48 +155,36 @@
 
             });
 
-
+        $("#EnrollDate").datepicker();
 
         $("#enrollButton").click(function () {
 
             $("#enrollSucessMessage").text("");
             $("#enrollErrorMessage").text("");
 
-            var regNo = $("#Registrations").val();
-            if (regNo == "") {
-                $("#registrationIdErrorMessage").text("Select Your Registration No");
-                return false;
-            }
+            var studentId = $("#Registrations").val();
+            
             var date = $("#EnrollDate").val();
-            if (date == "") {
-               // alert("Select Date");
-
-                $("#dateErrorMessage").text("Select Date");
-                return false;
-            }
+            
             var courseId = $("#CourseId").val();
 
-            if (courseId == "") {
-                $("#courseIdErrorMessage").text("Select a Course");
-            }
-
-            var jsonData = { regNo: regNo, courseId: courseId };
+            var jsonData = { studentId: studentId, courseId: courseId };
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("IsAlreadyEnrolled","EnrollCourse")',
+                url: '@Url.Action("IsAlreadyEnrolled","EnrollCourses")',
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(jsonData),
                 dataType: "json",
                 success: function (data) {
                     if (data == false) {
-                        var jsonData1 = { RegistrationNo: regNo, CourseId: courseId, EnrollDate: date };
+                        var jsonData1 = { studentId: studentId, CourseId: courseId, EnrollDate: date };
                         $.ajax({
                             type: "POST",
-                            url: '@Url.Action("EnrollStudentToCourse", "EnrollCourse")',
+                            url: '@Url.Action("EnrollStudentToCourse", "EnrollCourses")',
                             contentType: "application/json; charset=utf-8",
                             data: JSON.stringify(jsonData1),
                             dataType: "json",
-                            success: function (data1) {
+                            success: function (data) {
                                 $("#enrollSucessMessage").text("Course Enrolled Successfully  !");
                                 $("#Registrations").prop("selectedIndex", 0);
                                 $("#Student_Name").val("");
@@ -208,7 +192,6 @@
                                 $("#Student_Department_Name").val("");
                                 $("#CourseId").empty();
                                 $("#EnrollDate").val("");
-                               // $("#enrollDate").val('2016-05-09');
                             },
                         });
                         return false;
@@ -218,6 +201,7 @@
                 },
             });
             return false;
+            //Course Already Enrolled
         });
     });
 

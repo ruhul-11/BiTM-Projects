@@ -15,7 +15,7 @@ namespace UniversityManagement.Controllers
     public class EnrollCoursesController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
-
+        EnrollCourse enrollCourse = new EnrollCourse();
 
 
         public ActionResult Enroll()
@@ -48,15 +48,15 @@ namespace UniversityManagement.Controllers
             return Json(students, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetCoursesbyDeptId(int deptId)
+        public JsonResult GetCoursesByDeptId(int deptId)
         {
             var courses = db.Courses.Where(m => m.Department.DepartmentId == deptId).ToList();
             return Json(courses, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult IsAlreadyEnrolled(string regNo, int courseId)
+        public JsonResult IsAlreadyEnrolled(int studentId, int courseId)
         {
-            var enrollCourses = db.EnrollCourses.Where(m => m.Student.RegNo == regNo && m.Course.CourseId == courseId);
+            var enrollCourses = db.EnrollCourses.Where(m => m.StudentId == studentId && m.Course.CourseId == courseId);
 
             if (enrollCourses.Count() == 0)
             {
@@ -65,21 +65,37 @@ namespace UniversityManagement.Controllers
             return Json(true);
         }
 
-        public JsonResult EnrollStudentToCourse(EnrollCourse enrollCourse)
+
+        
+        public JsonResult EnrollStudentToCourse(int studentId, int CourseId, DateTime EnrollDate)
         {
 
-            var enrollCourses = db.EnrollCourses.Where(m => m.Student.RegNo == enrollCourse.Student.RegNo && m.CourseId == enrollCourse.CourseId).ToList();
+            var enrollCourseList = db.EnrollCourses.Where(m => m.StudentId == enrollCourse.StudentId && m.CourseId == enrollCourse.CourseId).ToList();
 
-            if (enrollCourses.Count() == 1)
+            
+
+            if (enrollCourseList.Count() == 1)
             {
-                var id = enrollCourses[0].EnrollCourseId;
-                var date = enrollCourses[0].EnrollDate;
+                var id = enrollCourseList[0].EnrollCourseId;
+                var date = enrollCourseList[0].EnrollDate;
                 enrollCourse.EnrollCourseId = id;
                 enrollCourse.EnrollDate = date;
                 db.EnrollCourses.AddOrUpdate(enrollCourse);
+
+                //var id = enrollCourseList[0].EnrollCourseId;
+                //var date = enrollCourseList[0].EnrollDate;
+                //enrollCourse.EnrollCourseId = id;
+                //enrollCourse.StudentId = studentId;
+                //enrollCourse.EnrollDate = date;
+                //enrollCourse.CourseId = CourseId;
+                //db.EnrollCourses.AddOrUpdate(enrollCourse);
             }
             else
             {
+                enrollCourse.StudentId = studentId;
+                enrollCourse.CourseId = CourseId;
+                enrollCourse.EnrollDate = EnrollDate;
+
                 db.EnrollCourses.Add(enrollCourse);
             }
 

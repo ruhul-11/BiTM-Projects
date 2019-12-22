@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201912201529128_Update-EnrollCourseModel.designer.cs">
       <DependentUpon>201912201529128_Update-EnrollCourseModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912220601435_Modify-Student-Model.cs" />
+    <Compile Include="Migrations\201912220601435_Modify-Student-Model.designer.cs">
+      <DependentUpon>201912220601435_Modify-Student-Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
     <Compile Include="Models\Course.cs" />
@@ -205,6 +209,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -262,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912201529128_Update-EnrollCourseModel.resx">
       <DependentUpon>201912201529128_Update-EnrollCourseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912220601435_Modify-Student-Model.resx">
+      <DependentUpon>201912220601435_Modify-Student-Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

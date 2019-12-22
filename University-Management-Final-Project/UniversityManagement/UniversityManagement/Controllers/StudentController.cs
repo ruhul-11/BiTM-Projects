@@ -19,10 +19,10 @@ namespace UniversityManagement.Controllers
         [HttpPost]
         public ActionResult Register(Student student)
         {
+            student.RegNo = GetStudentRegNo(student);
+
             if (ModelState.IsValid)
             {
-                student.RegNo = GetStudentRegNo(student);
-
                 db.Students.Add(student);
                 db.SaveChanges();
                 FlashMessage.Confirmation("Registration Successfull. Your Registration number is: " + student.RegNo);

@@ -168,3 +168,4 @@ I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManage
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.UpdateEnrollCourseModel.resources
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\bin\itextsharp.dll
 I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\bin\itextsharp.xml
+I:\Github\Mvc-Final-Project\University-Management-Final-Project\UniversityManagement\UniversityManagement\obj\Debug\UniversityManagement.Migrations.ModifyStudentModel.resources
