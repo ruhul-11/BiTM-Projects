@@ -61,7 +61,7 @@
 
                 <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
-                        <input type="submit" value="Make Pdf" class="btn btn-success btn-block" />
+                        <input value="Make Pdf" class="btn btn-success btn-block" />
                         <br />
                     </div>
                 </div>
@@ -156,7 +156,6 @@
                             document.getElementById("date").innerHTML = currentDate.getDate() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
 
                             var parameter = { studentId: studentId };
-                            //alert(deptCode);
                             $.ajax({
                                 type: "POST",
                                 url: '@Url.Action("GetCoursesByStudentId","EnrollCourses")',
@@ -166,15 +165,12 @@
                                 success: function (data1) {
                                     var table = $('<table style="width: 100%;" id="resultTable" class="table">');
                                     
-                                    var thead = $('<thead></thead>');
-                                   // var theadPdf = $('<thead></thead>');
+                                    
                                     table.append('<th>Course Code</th>');
-                                    table.append('<th>Name</th>');
+                                    table.append('<th>Course Name</th>');
                                     table.append('<th>Grade</th>');
                                     table.css('width', '100%');
                                    
-                                   // table.append(thead);
-                                   // tablePdf.append(theadPdf);
 
                                     $.each(data1, function (key1, value1) {
 

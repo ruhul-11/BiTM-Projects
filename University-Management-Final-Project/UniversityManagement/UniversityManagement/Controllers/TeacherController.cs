@@ -32,9 +32,9 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Save");
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", teacher.DepartmentId);
-            ViewBag.DesignationId = new SelectList(db.Designations, "DesignationId", "Name", teacher.DesignationId);
-            return View(teacher);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code");
+            ViewBag.DesignationId = new SelectList(db.Designations, "DesignationId", "Name");
+            return RedirectToAction("Save");
         }
 
         public JsonResult IsEmailExists(string Email)

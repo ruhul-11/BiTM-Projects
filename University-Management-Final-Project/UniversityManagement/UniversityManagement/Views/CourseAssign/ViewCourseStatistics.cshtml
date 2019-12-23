@@ -8,11 +8,11 @@
 <br />
 
 <fieldset>
-    <legend>View Course Statistics</legend>
+    <h2 class="alert alert-success text-center">View Course Statistics</h2>
     @using (Html.BeginForm())
     {
 
-        <div class="col-md-8 col-md-offset-3">
+        <div class="col-md-12">
             <div class="form-group">
                 @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -22,36 +22,31 @@
                         {
                             <option value="@aDepartment.DepartmentId">@aDepartment.Name</option>
                         }
-                    </select><label id="DeptErrorLabel" style="color: red;"></label>
+                    </select>
+                    <label id="messageLabel" style="color: red; font-weight: normal; font-size: 20px; font-style:italic;"></label>
+                    <br />
+                    <br />
                 </div>
-
-
-
-                @*<div class="col-md-10">
-                        @Html.DropDownList("Departments", null, " --Select Department-- ", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
-                    </div>
-                    <label id="DeptErrorLabel" style="color: red;"></label>*@
             </div>
         </div>
         <br />
         <br />
 
 
-        <label id="messageLabel" style="color: #00B16A; font-weight: normal; font-size: 20px;"></label>
+        
 
-        @*<table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th>Title</th>
-                        <th>Semester</th>
-                        <th>Assign To</th>
-                    </tr>
-                </thead>
-                <tbody id="htmlTableDiv"></tbody>
+        <table class="table table-bordered table-striped courseTableInfo">
+            <thead class="bg-primary">
+                <tr>
+                    <th>Code</th>
+                    <th>Title</th>
+                    <th>Semester</th>
+                    <th>Assign To</th>
+                </tr>
+            </thead>
+            <tbody id="courseTable"></tbody>
 
-            </table>*@
+        </table>
 
         <div id="htmlTableDiv">
         </div>
@@ -59,15 +54,17 @@
 </fieldset>
 
 @section Scripts {
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
     <script>
 
         $(document).ready(function () {
+
             $("#Departments").change(function () {
 
                 var departmentId = $("#Departments").val();
+                var isCourseHere = 0;
+
 
                 $("#messageLabel").text("");
                 var parameter = { deptId : departmentId };
@@ -80,49 +77,31 @@
                     data: JSON.stringify(parameter),
                     dataType: "json",
                     success: function (data) {
-
-                        var table = $('<table id="statisticsTable" border="1" class="table" >');
-
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Code</th>');
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Title</th>');
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Semester</th>');
-                        table.append('<th style="text-align: center; border-right: 1px solid #ffffff;">Assigned To</th></table>');
-                        table.css('background-color', '#22D7A0');
-
-                        var tableRow = false;
-
-                        $("#htmlTableDiv").show();
-
                         $.each(data, function (key, value) {
 
-                            var trow = $('<tr>');
                             var assignedTo = value.AssignTo;
+
+                            isCourseHere = 1;
 
                             if (assignedTo == null || assignedTo == "")
                                 assignedTo = 'Not Assigned Yet';
 
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Code + '</td>');
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Name + '</td>');
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + value.Semester.Name + '</td>');
-                            trow.append('<td style="text-align: center; border-right: 1px solid #ffffff;">' + assignedTo + '</td></tr>');
-
-                            table.append(trow);
-
-                            tableRow = true;
+                            $("#courseTable").append('<tr>' +
+                                '<td style="background-color: #5cb85c">' + value.Code + '</td>' +
+                                '<td style="background-color: #f0ad4e">' + value.Name + '</td>' +
+                                '<td style="background-color: #5cb85c">' + value.Semester.Name + '</td>' +
+                                '<td style="background-color: #f0ad4e">' + assignedTo + '</td>' +
+                                '</tr>'
+                            );
 
                         });
 
-                        $("tr:odd", table).css('background-color', '#F5F5F5');
-                        $("tr:even", table).css('background-color', '#EEEEEE');
 
-
-                        $("#htmlTableDiv").html(table);
-
-                        if (tableRow == false) {
-                            $("#htmlTableDiv").hide();
-                            if (Departments != 0)
-                                $("#messageLabel").text("This Department has no Course.");
+                        if (isCourseHere == 0) {
+                            $("#messageLabel").text("This Department has no Course.");
                         }
+                                
+                        
                     }
 
                 });
@@ -130,6 +109,8 @@
                 return false;
 
             });
+
+            $("#courseTableInfo").DataTable();
         });
     </script>
 }

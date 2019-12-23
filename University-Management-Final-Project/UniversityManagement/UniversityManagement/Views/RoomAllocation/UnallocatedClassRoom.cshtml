@@ -54,7 +54,7 @@
                     var jsonData = { decision: decision };
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("UnAllocateAllRooms", "ClassRoomAllocation")',
+                        url: '@Url.Action("UnAllocateAllRooms", "RoomAllocation")',
                         contentType: "application/json; charset=utf-8",
                         data: JSON.stringify(jsonData),
                         dataType: "json",

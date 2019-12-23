@@ -172,10 +172,12 @@
                                 dataType: "json",
                                 success: function (data) {
                                     $("#saveSucessMessage").text("Result Saved Successfully!");
-                                    $("#registrationId").prop("selectedIndex", 0);
-                                    $("#name").val("");
-                                    $("#email").val("");
-                                    $("#department").val("");
+                                    $("#Registrations").prop("selectedIndex", 0);
+                                    $("#GradeList").prop("selectedIndex", 0);
+                                    $("#CourseId").prop("selectedIndex", 0);
+                                    $("#Student_Name").val("");
+                                    $("#Student_Email").val("");
+                                    $("#Student_Department_Name").val("");
                                     $("#courseId").empty();
                                     $("#gradeName").prop("selectedIndex", 0);
                                 },

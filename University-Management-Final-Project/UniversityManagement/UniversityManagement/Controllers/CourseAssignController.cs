@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
+﻿using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using UniversityManagement.DataContext;
 using UniversityManagement.Models;
@@ -19,23 +16,6 @@ namespace UniversityManagement.Controllers
         {
             ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Save(CourseAssign courseassign)
-        {
-            if (ModelState.IsValid)
-            {
-                db.CourseAssigns.Add(courseassign);
-                db.SaveChanges();
-                FlashMessage.Confirmation("Course assigned successfull");
-
-                return RedirectToAction("Save");
-            }
-
-            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
-            return RedirectToAction("Save");
-            /*return View(courseassign);*/  //Need to Check
         }
 
         public JsonResult GetTeacherByDeptId(int deptId)
@@ -124,5 +104,22 @@ namespace UniversityManagement.Controllers
                 }
             }
         }
+
+        //[HttpPost]
+        //public ActionResult Save(CourseAssign courseassign)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.CourseAssigns.Add(courseassign);
+        //        db.SaveChanges();
+        //        FlashMessage.Confirmation("Course assigned successfull");
+
+        //        return RedirectToAction("Save");
+        //    }
+
+        //    ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
+        //    return RedirectToAction("Save");
+
+        //}
     }
 }

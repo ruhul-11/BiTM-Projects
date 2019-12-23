@@ -7,17 +7,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*@{
-    List<Department> departments = ViewBag.DepartmentList;
-}*@
 <br />
 <br />
-<h2 class="text-center">View All Department</h2>
+<h2 class="alert alert-success text-center">View All Department</h2>
 <hr />
 
 
 
-<table class="table table-bordered table-striped width-75">
+<table id="departmentInfo" class="table table-bordered table-striped width-75">
     <thead class="bg-primary">
         <tr>
             <th>Code</th>
@@ -40,59 +37,17 @@
 
 
 
-@*@section scripts
+@section scripts
     {
-        <script>
-            $(document).ready(function() {
-                $("#DepartmentIds").change(function () {
-                    $("#studentId").empty();
-                    $("#DepartmentName").val('');
-                    $("#studentInfo").empty();
-                    $("#studentId").append('<option value="">--select student--</option>');
-                    var deptId = $("#DepartmentIds").val();
-                    var parameter = { departmentId: deptId }
-                    $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("GetStudentByDeptId","Department")',
-                        //url:'/Department/GetStudentByDeptId'
-                        contentType: "application/json;charset=utf-8",
-                        data: JSON.stringify(parameter),
-                        success: function(studentList) {
-                            $.each(studentList, function (key, value) {
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 
-                                $("#studentId").append('<option value='+value.StudentId+'>'+value.StudentName+'</option>');
+    <script>
+        $(document).ready(function () {
 
-                            });
-                        }
-                    });
-                });
+            $("#departmentInfo").DataTable();
 
-                $("#studentId").change(function () {
-                    var id = $("#studentId").val();
-                    var parameter = { id: id }
-                    $("#DepartmentName").val('');
-                    $("#studentInfo").empty();
-                    $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("GetStudentById", "Department")',
-                        contentType: "application/json;charset=utf-8",
-                        data: JSON.stringify(parameter),
-                        success: function(student) {
-                            $("#DepartmentName").val(student.Department.DepartmentName);
-                            $("#studentInfo").append('<tr>' +
-                                '<td>' + student.StudentName + '</td>' +
-                                '<td>' + student.Email + '</td>' +
-                                '<td>' + student.Address + '</td>' +
-                                '<td>' + student.Age + '</td>' +
-                                '<td>' + student.Department.DepartmentName + '</td>' +
-                                '</tr>'
-                                );
-                        }
-                    });
+        });
+    </script>
 
-                });
-            });
-        </script>
-
-    }*@
+}
 

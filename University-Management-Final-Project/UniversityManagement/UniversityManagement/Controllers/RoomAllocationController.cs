@@ -12,6 +12,7 @@ namespace UniversityManagement.Controllers
     public class RoomAllocationController : Controller
     {
         private UniversityDbContext db = new UniversityDbContext();
+        RoomAllocation roomAllocation = new RoomAllocation();
 
         public ActionResult Allocate()
         {
@@ -22,24 +23,24 @@ namespace UniversityManagement.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Allocate(RoomAllocation roomAllocation)
-        {
-            if (ModelState.IsValid)
-            {
-                db.RoomAllocations.Add(roomAllocation);
-                db.SaveChanges();
-                FlashMessage.Confirmation("Department saved successfully");
-                return RedirectToAction("Allocate");
-            }
+        //[HttpPost]
+        //public ActionResult Allocate(RoomAllocation roomAllocation)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.RoomAllocations.Add(roomAllocation);
+        //        db.SaveChanges();
+        //        FlashMessage.Confirmation("Department saved successfully");
+        //        return RedirectToAction("Allocate");
+        //    }
 
-            ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
-            ViewBag.Courses = new SelectList(db.Courses, "CourseId", "Name");
-            ViewBag.Days = new SelectList(db.Days, "DayId", "Name");
-            ViewBag.Rooms = new SelectList(db.Rooms, "RoomId", "Name");
+        //    ViewBag.Departments = new SelectList(db.Departments, "DepartmentId", "Name");
+        //    ViewBag.Courses = new SelectList(db.Courses, "CourseId", "Name");
+        //    ViewBag.Days = new SelectList(db.Days, "DayId", "Name");
+        //    ViewBag.Rooms = new SelectList(db.Rooms, "RoomId", "Name");
 
-            return RedirectToAction("Allocate");
-        }
+        //    return RedirectToAction("Allocate");
+        //}
 
 
         public JsonResult GetCoursesByDeptId(int deptId)
@@ -49,12 +50,17 @@ namespace UniversityManagement.Controllers
         }
 
 
-        public JsonResult SaveRoomSchedule(RoomAllocation roomAllocation)
+        public JsonResult SaveRoomSchedule(int departmentId, int courseId, int roomId, int dayId, double startTime, double endTime)
         {
-            var scheduleList = db.RoomAllocations.Where(m => m.RoomId == roomAllocation.RoomId && m.DayId == roomAllocation.DayId && m.RoomStatus == "Allocated").ToList();
+            var scheduleList = db.RoomAllocations.Where(m => m.RoomId == roomId && m.DayId == dayId && m.RoomStatus == "Allocated").ToList();
             if (scheduleList.Count == 0)
             {
                 roomAllocation.RoomStatus = "Allocated";
+                roomAllocation.CourseId = courseId;
+                roomAllocation.RoomId = roomId;
+                roomAllocation.DayId = dayId;
+                roomAllocation.StartTime = startTime;
+                roomAllocation.EndTime = endTime;
                 db.RoomAllocations.Add(roomAllocation);
                 db.SaveChanges();
                 return Json(true);
@@ -64,8 +70,8 @@ namespace UniversityManagement.Controllers
                 bool status = false;
                 foreach (var allocation in scheduleList)
                 {
-                    if ((roomAllocation.StartTime >= allocation.StartTime && roomAllocation.StartTime < allocation.EndTime)
-                         || (roomAllocation.EndTime > allocation.StartTime && roomAllocation.EndTime <= allocation.EndTime) && roomAllocation.RoomStatus == "Allocated")
+                    if ((startTime >= allocation.StartTime && startTime < allocation.EndTime)
+                         || (endTime > allocation.StartTime && endTime <= allocation.EndTime) && roomAllocation.RoomStatus == "Allocated")
                     {
                         status = true;
                     }

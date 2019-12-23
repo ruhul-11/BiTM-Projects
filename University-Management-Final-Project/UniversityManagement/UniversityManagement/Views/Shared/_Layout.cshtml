@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -58,7 +59,7 @@
                         @Html.ActionLink("Class-Room", "Allocate", "RoomAllocation")
                         <ul>
                             <li>@Html.ActionLink("Class Room Allocation", "Allocate", "RoomAllocation")</li>
-                            <li>@Html.ActionLink("Class Schedule and Room Information", "Department", "Department")</li>
+                            <li><a href="#">Class Schedule and Room Information</a></li>
                             <li>@Html.ActionLink("Unallocate Classrooms", "UnallocatedClassRoom", "RoomAllocation")</li>
                         </ul>
                     </li>

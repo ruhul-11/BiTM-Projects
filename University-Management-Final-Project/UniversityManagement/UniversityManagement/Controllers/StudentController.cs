@@ -19,8 +19,6 @@ namespace UniversityManagement.Controllers
         [HttpPost]
         public ActionResult Register(Student student)
         {
-           
-
             if (ModelState.IsValid)
             {
                 student.RegNo = GetStudentRegNo(student);
@@ -30,8 +28,8 @@ namespace UniversityManagement.Controllers
                 return RedirectToAction("Register");
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code", student.DepartmentId);
-            return View(student);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "Code");
+            return RedirectToAction("Register");
         }
 
 

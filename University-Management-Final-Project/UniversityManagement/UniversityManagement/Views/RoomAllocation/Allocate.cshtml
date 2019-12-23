@@ -1,8 +1,7 @@
-﻿@using Vereyon.Web
-@model UniversityManagement.Models.RoomAllocation
+﻿@model UniversityManagement.Models.RoomAllocation
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Allocate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
@@ -13,7 +12,7 @@
    
     <div class="form-horizontal">
 
-        @Html.RenderFlashMessages()
+       
         <fieldset class="box-75">
             @*<legend>Allocate Class Rooms</legend>*@
             <h2 class="text-center">Allocate Class Rooms</h2>
@@ -26,8 +25,7 @@
                     @Html.LabelFor(model => model.Course.Department.DepartmentId, "Department", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.DropDownList("Departments", null, "-- Select Department --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Course.Department.DepartmentId, "", new { @class = "text-danger" })
-                        <label id="deptErrorMessage" style="color: red;"></label>
+                        <label id="departmentErroMessage" style="color: red; font-style: italic"></label>
                     </div>
                     
                 </div>
@@ -39,7 +37,7 @@
                         <select class="form-control" id="Courses">
                             <option value="0">-- Select Course --</option>
                         </select>
-                        <label id="courseErrorMessage" style="color: red;"></label>
+                        <label id="courseErrorMessage" style="color: red; font-style: italic"></label>
                     </div>
                     
                 </div>
@@ -49,8 +47,7 @@
                     @Html.LabelFor(model => model.RoomId, "Room No", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.DropDownList("Rooms", null, "-- Select Room --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
-                        <label id="roomErrorMessage" style="color: red;"></label>
+                        <label id="roomErrorMessage" style="color: red; font-style: italic"></label>
                     </div>
                     
                 </div>
@@ -59,8 +56,7 @@
                     @Html.LabelFor(model => model.DayId, "Day", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.DropDownList("Days", null, "-- Select Day --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.DayId, "", new { @class = "text-danger" })
-                        <label id="dayErrorMessage" style="color: red;"></label>
+                        <label id="dayErrorMessage" style="color: red; font-style: italic"></label>
                     </div>
                     
                 </div>
@@ -72,7 +68,7 @@
                     <div class="col-md-8">
 
                         <input type="time" id="startTime" name="startTime" class="form-control" />
-                        <label id="startTimeErrorMessage" style="color: red;"></label>
+                        <label id="startTimeErrorMessage" style="color: red; font-style: italic"></label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -81,7 +77,7 @@
                     <div class="col-md-8">
 
                         <input type="time" id="endTime" name="endTime" class="form-control" />
-                        <label id="endTimeErrorMessage" style="color: red;"></label>
+                        <label id="endTimeErrorMessage" style="color: red; font-style: italic"></label>
                     </div>
                 </div>
 
@@ -109,9 +105,6 @@
 
 @section Scripts {
 
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script>
         $(document).ready(function() {
 
@@ -205,17 +198,17 @@
 
                     $.ajax({
                         type: "POST",
-                        url: '@Url.Action("SaveRoomSchedule", "ClassRoomAllocation")',
+                        url: '@Url.Action("SaveRoomSchedule", "RoomAllocation")',
                         contentType: "application/json; charset=utf-8",
                         data: JSON.stringify(jsonData),
                         dataType: "json",
                         success: function(data) {
                             if (data == true) {
                                 $("#roomAllocateSuccessMessage").text("Class Room Schedule Saved Successfully!");
-                                $("#departmentId").prop("selectedIndex", 0);
-                                $("#courseId").prop("selectedIndex", 0);
-                                $("#roomId").prop("selectedIndex", 0);
-                                $("#dayId").prop("selectedIndex", 0);
+                                $("#Departments").prop("selectedIndex", 0);
+                                $("#Courses").prop("selectedIndex", 0);
+                                $("#Rooms").prop("selectedIndex", 0);
+                                $("#Days").prop("selectedIndex", 0);
                                 $("#startTime").val('mm/dd/yyyy');
                                 $("#endTime").val('mm/dd/yyyy');
                                 return false;
@@ -238,7 +231,7 @@
 
 
         function ResetErrorLabel() {
-            $("#deptErrorMessage").text("");
+            $("#departmentErroMessage").text("");
             $("#courseErrorMessage").text("");
             $("roomAllocateSuccessMessage").text("");
             $("#roomErrorMessage").text("");

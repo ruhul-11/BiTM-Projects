@@ -23,24 +23,23 @@ namespace UniversityManagement.Controllers
 
         public ActionResult Enroll()
         {
-            //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Code");
             ViewBag.Registrations = new SelectList(db.Students, "StudentId", "RegNo");
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Enroll(EnrollCourse enrollCourse)
-        {
-            if (ModelState.IsValid)
-            {
-                db.EnrollCourses.Add(enrollCourse);
-                db.SaveChanges();
-                FlashMessage.Confirmation("Course enrolled to Student Successfull.");
-                return RedirectToAction("Enroll");
-            }
-            FlashMessage.Danger("Course enrolled failed");
-            return RedirectToAction("Enroll");
-        }
+        //[HttpPost]
+        //public ActionResult Enroll(EnrollCourse enrollCourse)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.EnrollCourses.Add(enrollCourse);
+        //        db.SaveChanges();
+        //        FlashMessage.Confirmation("Course enrolled to Student Successfull.");
+        //        return RedirectToAction("Enroll");
+        //    }
+        //    FlashMessage.Danger("Course enrolled failed");
+        //    return RedirectToAction("Enroll");
+        //}
 
 
         public JsonResult GetStudentById(int studentId)
@@ -126,6 +125,18 @@ namespace UniversityManagement.Controllers
                     bEnrollCourse.CourseGrade = aGrade.Name;
                     db.EnrollCourses.AddOrUpdate(bEnrollCourse);
                 }
+            else
+            {
+                var id = grades[0].EnrollCourseId;
+
+                bEnrollCourse = db.EnrollCourses.FirstOrDefault(m => m.EnrollCourseId == id);
+
+                int gradeId = Convert.ToInt32(courseGradeId);
+                aGrade = db.Grades.Find(gradeId);
+
+                bEnrollCourse.CourseGrade = aGrade.Name;
+                db.EnrollCourses.AddOrUpdate(bEnrollCourse);
+            }
                 db.SaveChanges();
                 return Json(true);
         }

@@ -64,10 +64,10 @@ label.error {
 .menu li:hover > a {
     color: #ffffff;
 }
-.menu li li:hover > a {
-    background-color: #444444;
-    text-decoration: none;
-}
+    .menu li li:hover > a {
+        background-color: #5cb85c!important;
+        text-decoration: none;
+    }
 .menu li li {
     display: block
 }
