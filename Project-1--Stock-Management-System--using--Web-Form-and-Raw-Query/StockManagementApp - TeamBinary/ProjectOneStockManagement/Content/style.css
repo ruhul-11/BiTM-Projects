@@ -1,0 +1,100 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clr {
+    clear: both;
+}
+#ctl01{
+    width: 100%;
+}
+.custom-h2{
+    width: 100%;
+    padding: 15px 0;
+}
+
+.fullnav {
+    height: 100%;
+    width: 12%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #000000 !important;
+}
+.navbar-main{
+    padding: 0!important;
+}
+
+.navbar-logo{
+    float: left;
+}
+.navbar-logo a {
+        display: block;
+        color: #fff;
+        font-size: 32px;
+        padding: 20px 0 25px 10px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+.navbar-logo a:hover {
+        background-color: #4CAF50;
+    }
+    
+.menu-content {
+        padding: 0;
+        margin: 0;
+        float: left;
+    }
+.menu-content ul li{
+    display: block;
+}
+.menu-content ul li a{
+    display: block;
+    text-decoration: none;
+    padding: 10px 0 10px 10px;
+    font-size: 14px;
+    color: #fff;
+}
+.menu-content ul li a:hover{
+    background-color: blueviolet;
+}
+.sticky {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.5s linear;
+    background-color: blueviolet;
+    color: white;
+}
+.width-100{
+    width: 100%;
+}
+.fullnav .navbar-collapse{
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.btn-right{
+    float: right;
+}
+.main-table {
+    width: 100%
+}
+.main-table td{
+    margin-bottom: 10px;
+}
+.btn-float {
+    float: right;
+}
+.w-33{
+    width: 33.33%;
+}

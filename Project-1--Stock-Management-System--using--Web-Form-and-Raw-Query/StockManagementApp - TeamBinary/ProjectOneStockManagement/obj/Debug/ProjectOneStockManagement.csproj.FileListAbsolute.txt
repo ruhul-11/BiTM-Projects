@@ -1,0 +1,150 @@
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\ProjectOneStockManagement.dll.config
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\ProjectOneStockManagement.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\ProjectOneStockManagement.pdb
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\csc.exe
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\csc.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\csc.rsp
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\csi.exe
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\csi.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\csi.rsp
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.AppContext.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Console.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.IO.Compression.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.IO.Pipes.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.Claims.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.ValueTuple.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Xml.XPath.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\vbc.exe
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\vbc.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\vbc.rsp
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\VBCSCompiler.exe
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Antlr3.Runtime.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Newtonsoft.Json.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\System.Web.Optimization.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\WebGrease.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\System.Web.Optimization.xml
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Newtonsoft.Json.xml
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Antlr3.Runtime.pdb
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.csprojAssemblyReference.cache
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.csproj.CoreCompileInputs.cache
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.csproj.CopyComplete
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.dll
+C:\Users\M i L o N\source\repos\StockManagementApp\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.pdb
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\ProjectOneStockManagement.dll.config
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\ProjectOneStockManagement.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\ProjectOneStockManagement.pdb
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\csc.exe
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\csc.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\csc.rsp
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\csi.exe
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\csi.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\csi.rsp
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.AppContext.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Console.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.IO.Compression.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.IO.Pipes.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.Claims.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.ValueTuple.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Xml.XPath.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\vbc.exe
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\vbc.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\vbc.rsp
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\VBCSCompiler.exe
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Antlr3.Runtime.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Newtonsoft.Json.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\System.Web.Optimization.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\WebGrease.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\System.Web.Optimization.xml
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Newtonsoft.Json.xml
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Antlr3.Runtime.pdb
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.csprojAssemblyReference.cache
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.csproj.CoreCompileInputs.cache
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.csproj.CopyComplete
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.dll
+C:\Users\M i L o N\source\repos\StockManagementApp - TeamBinary\ProjectOneStockManagement\obj\Debug\ProjectOneStockManagement.pdb
